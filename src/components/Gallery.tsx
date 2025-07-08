@@ -6,7 +6,7 @@ import group_2 from '../assets/group_2.jpg';
 import group from '../assets/group.jpg';
 import IAS from '../assets/IAS.jpg';
 import marketing from '../assets/marketing.jpg';
-
+import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 const Gallery = () => {
   const galleryItems = [
     {
@@ -75,8 +75,16 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-gradient-to-br from-gray-900 via-indigo-900/20 to-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="gallery" className="py-20 bg-[#1f073c] relative overflow-hidden">
+      {/* Background sparkles */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-4 left-1/4 w-20 h-20 border-2 border-purple-400/20 rounded-full"></div>
+        <div className="absolute top-0 right-1/4 w-12 h-12 bg-purple-500/10 rounded-full"></div>
+        <div className="absolute top-10 right-10 w-6 h-6 bg-purple-400/20 rotate-45"></div>
+        <div className="absolute bottom-1 right-1/3 w-1 h-32 bg-gradient-to-b from-purple-300/30 to-transparent rotate-12"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Gallery</span>
@@ -88,13 +96,13 @@ const Gallery = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {galleryItems.map((item, index) => (
-            <div 
+            <div
               key={index}
               className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:scale-105"
             >
               <div className="aspect-video overflow-hidden">
-                <img 
-                  src={item.src} 
+                <img
+                  src={item.src}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
@@ -132,40 +140,48 @@ const Gallery = () => {
           </div>
         </div>
 
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-purple-600/20 to-indigo-600/20 backdrop-blur-md rounded-2xl p-8 border border-purple-500/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Stay Connected</h3>
-            <p className="text-purple-200 mb-6">
-              Follow us on social media to get the latest updates and behind-the-scenes content from IITBHU MUN 2025
-            </p>
-            <div className="flex justify-center space-x-4">
-              <a 
-                href="#" 
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
-              >
-                <span className="text-white font-bold">FB</span>
-              </a>
-              <a 
-                href="#" 
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
-              >
-                <span className="text-white font-bold">IG</span>
-              </a>
-              <a 
-                href="#" 
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
-              >
-                <span className="text-white font-bold">TW</span>
-              </a>
-              <a 
-                href="#" 
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
-              >
-                <span className="text-white font-bold">LI</span>
-              </a>
-            </div>
-          </div>
-        </div>
+<div className="text-center">
+  <div className="bg-gradient-to-r from-purple-600/20 to-indigo-600/20 backdrop-blur-md rounded-2xl p-8 border border-purple-500/30">
+    <h3 className="text-2xl font-bold text-white mb-4">Stay Connected</h3>
+    <p className="text-purple-200 mb-6">
+      Follow us on social media to get the latest updates and behind-the-scenes content from IITBHU MUN 2025
+    </p>
+    <div className="flex justify-center space-x-4">
+      <a
+        href="https://facebook.com/yourpage"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+      >
+        <Facebook className="text-white" size={20} />
+      </a>
+      <a
+        href="https://www.instagram.com/iitbhu_mun/?hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+      >
+        <Instagram className="text-white" size={20} />
+      </a>
+      <a
+        href="https://twitter.com/yourpage"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+      >
+        <Twitter className="text-white" size={20} />
+      </a>
+      <a
+        href="https://in.linkedin.com/company/iitbhumun"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+      >
+        <Linkedin className="text-white" size={20} />
+      </a>
+    </div>
+  </div>
+</div>
       </div>
     </section>
   );

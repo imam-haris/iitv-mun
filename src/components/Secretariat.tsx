@@ -6,28 +6,24 @@ const Secretariat = () => {
     {
       name: 'Abhishek Anand',
       position: 'Secretary General',
-      // image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300',
       bio: 'A spirited force in a small frame, he’s the second-gen soul of IIT BHU MUN—quietly commanding, endlessly supportive, and proof that stature is measured by impact, not inches.',
       icon: Crown
     },
     {
       name: 'Kamal Banna',
       position: 'Director General',
-      // image: 'https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300',
       bio: 'Our fire-forged Director General—steering the team with sharp precision, a fierce drive, and just the right spark of anger when excellence demands it.',
       icon: Star
     },
     {
       name: 'Dhruv Yadav',
       position: 'Head of Operations',
-      // image: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=300',
       bio: 'A mischievous marvel with a boyish grin, but when duty calls, he’s ten steps ahead, turning chaos into clockwork with effortless flair.',
       icon: Users
     },
     {
       name: 'Devashish Tripathi',
       position: 'Head of Marketing',
-      // image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=300',
       bio: 'A true Varanasi virtuoso and deal-making dynamo, blending charm and street-smart strategy to squeeze gold from every gully like a textbook baniya with a masterstroke.',
       icon: Users
     },
@@ -36,42 +32,42 @@ const Secretariat = () => {
       position: 'Head of Committee Affairs',
       image: 'image-url-here',
       bio: 'The quiet powerhouse whose academic brilliance is only rivaled by her relentless commitment, gracefully carrying the core of the committee on shoulders steadier than most storms.',
-      icon: Users // or any other icon from lucide-react
+      icon: Users
     },
     {
       name: 'Akansha',
       position: 'Head of Public Relations',
       image: 'image-url-here',
       bio: 'A natural fit, blending professionalism with warmth, her friendliness not just a trait but a strategy, building bridges with a smile that speaks louder than any pitch.',
-      icon: Users // or any other icon from lucide-react
+      icon: Users
     },
     {
       name: 'Raghav Bansal',
       position: 'Head of Publicity',
       image: 'image-url-here',
       bio: 'The ever-charming Punjabi munda, sprinkling dildari in every direction, turning strangers into supporters with a grin and a perfectly timed “Oye hoye!”',
-      icon: Users // or any other icon from lucide-react
+      icon: Users
     },
     {
       name: 'Chahat Chauhan',
       position: 'Head of Creative Affairs',
       image: 'image-url-here',
       bio: 'An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.',
-      icon: Users // or any other icon from lucide-react
+      icon: Users
     }
-
-  ];
-
-  const additionalRoles = [
-    { title: 'Committee Chairs', count: 8, description: 'Leading discussions in specialized committees' },
-    { title: 'Vice Chairs', count: 16, description: 'Supporting committee operations and procedures' },
-    { title: 'Rapporteurs', count: 8, description: 'Documenting proceedings and resolutions' },
-    { title: 'Organising Committee', count: 25, description: 'Ensuring smooth conference operations' }
   ];
 
   return (
-    <section id="secretariat" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="secretariat" className="py-20 bg-[#1f073c] relative overflow-hidden">
+      {/* Background sparkles */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-4 left-1/4 w-20 h-20 border-2 border-purple-400/20 rounded-full"></div>
+        <div className="absolute top-0 right-1/4 w-12 h-12 bg-purple-500/10 rounded-full"></div>
+        <div className="absolute top-10 right-10 w-6 h-6 bg-purple-400/20 rotate-45"></div>
+        <div className="absolute bottom-1 right-1/3 w-1 h-32 bg-gradient-to-b from-purple-300/30 to-transparent rotate-12"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Secretariat</span>
@@ -83,14 +79,14 @@ const Secretariat = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {secretariatMembers.map((member, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group hover:scale-105"
             >
               <div className="flex items-start space-x-4">
                 <div className="relative">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.name}
                     className="w-20 h-20 rounded-full object-cover border-2 border-purple-500/30 group-hover:border-purple-400/50 transition-all duration-300"
                   />

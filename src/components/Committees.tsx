@@ -57,27 +57,27 @@ const Committees = () => {
       delegates: 40,
       level: 'Beginner'
     },
-    {
-      icon: Zap,
-      name: 'International Atomic Energy Agency',
-      acronym: 'IAEA',
-      agenda: 'Nuclear Non-Proliferation and Safety',
-      description: 'Promoting peaceful use of nuclear energy.',
-      delegates: 35,
-      level: 'Advanced'
-    },
-    {
-      icon: TreePine,
-      name: 'United Nations Environment Programme',
-      acronym: 'UNEP',
-      agenda: 'Combating Climate Change and Environmental Degradation',
-      description: 'Leading global environmental authority.',
-      delegates: 45,
-      level: 'Intermediate'
-    }
+    // {
+    //   icon: Zap,
+    //   name: 'International Atomic Energy Agency',
+    //   acronym: 'IAEA',
+    //   agenda: 'Nuclear Non-Proliferation and Safety',
+    //   description: 'Promoting peaceful use of nuclear energy.',
+    //   delegates: 35,
+    //   level: 'Advanced'
+    // },
+    // {
+    //   icon: TreePine,
+    //   name: 'United Nations Environment Programme',
+    //   acronym: 'UNEP',
+    //   agenda: 'Combating Climate Change and Environmental Degradation',
+    //   description: 'Leading global environmental authority.',
+    //   delegates: 45,
+    //   level: 'Intermediate'
+    // }
   ];
 
-  const getLevelColor = (level: string) => {
+  const getLevelColor = (level:String) => {
     switch (level) {
       case 'Beginner': return 'bg-green-500/20 text-green-400 border-green-500/30';
       case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
@@ -87,8 +87,16 @@ const Committees = () => {
   };
 
   return (
-    <section id="committees" className="py-20 bg-gradient-to-br from-gray-900 via-indigo-900/20 to-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="committees" className="py-20 bg-[#1f073c] relative overflow-hidden">
+      {/* Sparkles and visual effects */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-4 left-1/4 w-20 h-20 border-2 border-purple-400/20 rounded-full"></div>
+        <div className="absolute top-0 right-1/4 w-12 h-12 bg-purple-500/10 rounded-full"></div>
+        <div className="absolute top-10 right-10 w-6 h-6 bg-purple-400/20 rotate-45"></div>
+        <div className="absolute bottom-1 right-1/3 w-1 h-32 bg-gradient-to-b from-purple-300/30 to-transparent rotate-12"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Committees</span>
@@ -100,7 +108,7 @@ const Committees = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {committees.map((committee, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 group hover:scale-105"
             >
@@ -133,7 +141,7 @@ const Committees = () => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
             <h3 className="text-2xl font-bold text-white mb-4">Committee Registration</h3>
             <p className="text-purple-200 mb-6">
@@ -146,7 +154,7 @@ const Committees = () => {
               Register for Committees
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

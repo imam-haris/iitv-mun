@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import collegeImage from '../assets/college_img.png';
 import logo from '../assets/logo.png';
 
-const Hero = () => {
+const Hero = ({ onRegisterClick = () => {} }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -12,7 +12,7 @@ const Hero = () => {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2025-02-21T00:00:00').getTime();
+    const targetDate = new Date('2025-10-28T00:00:00').getTime();
     const updateTimer = () => {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -34,6 +34,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen bg-[#1f073c] relative overflow-hidden">
+      
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={collegeImage}
@@ -43,19 +44,6 @@ const Hero = () => {
         />
         <div className="absolute inset-0 bg-[#1f073c] opacity-60" />
       </div>
-
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-[10%] left-[30%] w-32 h-32 border-4 border-purple-400/20 rounded-full animate-pulse"></div>
-        <div className="absolute top-[30%] right-[20%] w-16 h-16 bg-purple-500/10 rounded-full blur-sm animate-ping"></div>
-        <div className="absolute top-0 left-[45%] w-0.5 h-full bg-gradient-to-b from-purple-300/40 via-transparent to-transparent rotate-12 animate-pulse" />
-        <div className="absolute top-1/4 right-[35%] w-0.5 h-64 bg-gradient-to-b from-purple-500/30 to-transparent rotate-12 animate-pulse" />
-        <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-purple-400/20 rotate-45 animate-pulse blur-sm"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-10 h-10 border-2 border-purple-300/20 rotate-45 blur-sm"></div>
-        <div className="absolute bottom-[10%] left-[15%] w-3 h-3 bg-purple-400/30 rounded-full blur-sm animate-ping"></div>
-        <div className="absolute top-[60%] right-[10%] w-2 h-2 bg-purple-300/20 rounded-full blur-sm animate-pulse"></div>
-      </div>
-
-      {/* Top Left - Logo and Text (shifted down) */}
       <div className="absolute top-20 left-6 z-10 flex items-center space-x-4">
         <img src={logo} alt="Logo" className="w-16 h-16 object-contain" />
         <div className="border-l-2 border-purple-400 pl-4">
@@ -64,8 +52,6 @@ const Hero = () => {
           <p className="text-purple-300 text-sm font-medium">Rise. Speak. Resolve.</p>
         </div>
       </div>
-
-      {/* Centered Content */}
       <div className="flex justify-center items-center min-h-screen relative z-10 px-4 text-center">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">IITBHU</h1>
@@ -73,14 +59,39 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-purple-300 font-medium mt-4">RISE. SPEAK. RESOLVE.</p>
           <p className="text-lg md:text-xl text-white font-medium mt-1">28–30 OCTOBER 2025</p>
 
-          <div className="mt-6">
-            <a
-              href="#register"
+          <div className="mt-6 flex flex-col items-center justify-center text-center">
+            <button
+              onClick={onRegisterClick}
               className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
             >
               Register
-            </a>
+            </button>
+            <div className="mt-6">
+              <p className="italic text-purple-200 text-lg mb-2">IITBHU MUN 2025 Begins In...</p>
+              <div className="flex items-center justify-center space-x-4">
+                <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded shadow-md">
+                  <div className="text-2xl font-bold text-white">{timeLeft.days}</div>
+                  <div className="text-sm text-purple-300">Days</div>
+                </div>
+                <div className="text-2xl font-bold text-white">:</div>
+                <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded shadow-md">
+                  <div className="text-2xl font-bold text-white">{timeLeft.hours}</div>
+                  <div className="text-sm text-purple-300">Hours</div>
+                </div>
+                <div className="text-2xl font-bold text-white">:</div>
+                <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded shadow-md">
+                  <div className="text-2xl font-bold text-white">{timeLeft.minutes}</div>
+                  <div className="text-sm text-purple-300">Minutes</div>
+                </div>
+                <div className="text-2xl font-bold text-white">:</div>
+                <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded shadow-md">
+                  <div className="text-2xl font-bold text-white">{timeLeft.seconds}</div>
+                  <div className="text-sm text-purple-300">Seconds</div>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 

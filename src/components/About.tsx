@@ -10,8 +10,16 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/20 to-gray-900">
-      <div className="container mx-auto px-4">
+    <section id="about" className="relative py-20 bg-[#1f073c] overflow-hidden">
+      {/* Background Sparkles and Shapes */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-4 left-1/4 w-20 h-20 border-2 border-purple-400/20 rounded-full"></div>
+        <div className="absolute top-0 right-1/4 w-12 h-12 bg-purple-500/10 rounded-full"></div>
+        <div className="absolute top-10 right-10 w-6 h-6 bg-purple-400/20 rotate-45"></div>
+        <div className="absolute bottom-1 right-1/3 w-1 h-32 bg-gradient-to-b from-purple-300/30 to-transparent rotate-12"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">IITBHU MUN</span>
