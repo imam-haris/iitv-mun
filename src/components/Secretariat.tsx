@@ -59,7 +59,7 @@ const Secretariat = () => {
       name: "Haris Imam",
       position: "Head of Technical Affairs",
       image: "image-url-here",
-      bio: "I believe technology should stay in the background while ideas shine in the spotlight. At IIT BHU MUN, my role as Tech Head is to ensure that happens.”",
+      bio: "I believe technology should stay in the background while ideas shine in the spotlight. At IIT BHU MUN, my role as Tech Head is to ensure that happens.",
       icon: Users,
     },
     {
