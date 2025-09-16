@@ -14,11 +14,13 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
     { name: "Committees", href: "/committees" },
     { name: "Secretariat", href: "/secretariat" },
     { name: "Gallery", href: "/gallery" },
+    {name: "Sponsors", href: "/sponsors"},
     // { name: 'FAQ', href: '/faq' },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1f073c]/50 backdrop-blur-lg shadow-md">
+    // <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-[#1f073c]/10 ">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1f073c]/1 backdrop-blur-lg shadow-md">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo section if needed */}

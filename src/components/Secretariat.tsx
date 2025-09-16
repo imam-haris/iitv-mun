@@ -51,8 +51,22 @@ const Secretariat = () => {
     {
       name: "Chahat Chauhan",
       position: "Head of Creative Affairs",
-      image: "image-url-here",
+      image: 'src/assets/creative.jpg',
       bio: "An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.",
+      icon: Users,
+    },
+    {
+      name: "Haris Imam",
+      position: "Head of Technical Affairs",
+      image: "image-url-here",
+      bio: "I believe technology should stay in the background while ideas shine in the spotlight. At IIT BHU MUN, my role as Tech Head is to ensure that happens.”",
+      icon: Users,
+    },
+    {
+      name: "Ashmit Singh",
+      position: "Head of Internal Affairs",
+      image: "image-url-here",
+      bio: "Deeply dedicated to IITBHU MUN, yet carrying a carefree streak that keeps the team smiling.",
       icon: Users,
     },
   ];

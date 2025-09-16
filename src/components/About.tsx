@@ -4,8 +4,8 @@ import { Users, Globe, Award, Target } from 'lucide-react';
 const About = () => {
   const stats = [
     { icon: Users, label: 'Delegates', value: '500+' },
-    { icon: Users, label: 'Team Members', value: '50+' },
-    { icon: Award, label: 'Committees', value: '8' },
+    { icon: Globe, label: 'Nationalities', value: '31' },
+    { icon: Award, label: 'Committees', value: '6' },
     { icon: Target, label: 'Years', value: '10+' }
   ];
 
@@ -62,7 +62,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
+        {/* <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -86,7 +86,7 @@ const About = () => {
               <p className="text-purple-200">Experience the highest standards of MUN procedures and witness exceptional quality in every aspect.</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

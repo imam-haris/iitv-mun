@@ -5,12 +5,15 @@ import About from "./components/About";
 import Committees from "./components/Committees";
 // import Secretariat from "./components/Secretariat";
 // import Gallery from "./components/Gallery";
+import Sponsors from "./components/sponsors";
+import Teams from "./components/Teams";
+import  ScrollToTop from "./ScrollToTop";
 import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Secretariat from "./components/Secretariat";
 import Gallery from "./components/Gallery";
-
+import SecretaryGeneralLetter from "./components/SecretaryGeneralLetter";
 function App() {
   const [showRegistration, setShowRegistration] = useState(false);
 
@@ -28,6 +31,7 @@ function App() {
 
   return (
     <Router>
+       <ScrollToTop /> 
       <div className="min-h-screen bg-gray-900 scroll-smooth">
         {/* <Header onRegisterClick={() => setShowRegistration(true)} />
         <Hero onRegisterClick={() => setShowRegistration(true)} /> */}
@@ -46,6 +50,7 @@ function App() {
                 <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Hero onRegisterClick={() => setShowRegistration(true)} />
                 <About />
+                 <SecretaryGeneralLetter />
                 <Footer />
               </div>
             }
@@ -76,7 +81,8 @@ function App() {
               <div>
                 <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Secretariat />
-                <footer />
+                <Teams/>
+                <Footer />
               </div>
             }
           />
@@ -86,7 +92,17 @@ function App() {
               <div>
                 <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Gallery />
-                <footer />
+                <Footer />
+              </div>
+            }
+          />
+            <Route
+            path="/sponsors"
+            element={
+              <div>
+                <Header onRegisterClick={() => setShowRegistration(true)} />
+                <Sponsors />
+                <Footer />
               </div>
             }
           />
