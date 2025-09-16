@@ -8,8 +8,10 @@ const Registration = () => {
     phone: '',
     institution: '',
     city: '',
-    committee: '',
     experience: '',
+    committee1: '',
+    committee2: '',
+    committee3: '',
     accommodation: false,
     delegation: false
   });
@@ -29,7 +31,9 @@ const Registration = () => {
     const { name, value, type } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      ...(name === "committee1" ? { committee2: "", committee3: "" } : {}),
+      ...(name === "committee2" ? { committee3: "" } : {})
     }));
   };
 
@@ -40,7 +44,7 @@ const Registration = () => {
   };
 
   const getCommitteeFee = () => {
-    const selected = committees.find(c => c.name === formData.committee);
+    const selected = committees.find(c => c.name === formData.committee1);
     return selected ? selected.fee : 0;
   };
 
@@ -113,15 +117,36 @@ const Registration = () => {
                     </select>
                   </div>
                 </div>
+
+                {/* Priority Committees */}
                 <div>
-                  <label className="block text-indigo-300 text-sm font-medium mb-2">Preferred Committee</label>
-                  <select name="committee" value={formData.committee} onChange={handleInputChange} className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors" required>
-                    <option value="">Select a committee</option>
-                    {committees.map((committee, index) => (
-                      <option key={index} value={committee.name}>{committee.name} (₹{committee.fee} - {committee.level})</option>
+                  <label className="block text-indigo-300 text-sm font-medium mb-2">1st Preference Committee</label>
+                  <select name="committee1" value={formData.committee1} onChange={handleInputChange} className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors" required>
+                    <option value="">Select committee</option>
+                    {committees.map((c, i) => (
+                      <option key={i} value={c.name}>{c.name} (₹{c.fee} - {c.level})</option>
                     ))}
                   </select>
                 </div>
+                <div>
+                  <label className="block text-indigo-300 text-sm font-medium mb-2">2nd Preference Committee</label>
+                  <select name="committee2" value={formData.committee2} onChange={handleInputChange} className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors" disabled={!formData.committee1}>
+                    <option value="">Select committee</option>
+                    {committees.filter(c => c.name !== formData.committee1).map((c, i) => (
+                      <option key={i} value={c.name}>{c.name} (₹{c.fee} - {c.level})</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-indigo-300 text-sm font-medium mb-2">3rd Preference Committee</label>
+                  <select name="committee3" value={formData.committee3} onChange={handleInputChange} className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors" disabled={!formData.committee2}>
+                    <option value="">Select committee</option>
+                    {committees.filter(c => c.name !== formData.committee1 && c.name !== formData.committee2).map((c, i) => (
+                      <option key={i} value={c.name}>{c.name} (₹{c.fee} - {c.level})</option>
+                    ))}
+                  </select>
+                </div>
+
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <input type="checkbox" name="accommodation" checked={formData.accommodation} onChange={handleInputChange} className="w-4 h-4 text-indigo-600 bg-indigo-900/30 border-indigo-500/30 rounded focus:ring-indigo-500" />
@@ -138,6 +163,7 @@ const Registration = () => {
               </form>
             </div>
 
+            {/* Right panel (unchanged) */}
             <div className="space-y-6">
               <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-indigo-500/20">
                 <h3 className="text-xl font-bold text-white mb-4 flex items-center">
@@ -197,10 +223,10 @@ const Registration = () => {
                   What's Included
                 </h3>
                 <ul className="space-y-2 text-indigo-200">
-                  <li className="flex items-center">
+                  {/* <li className="flex items-center">
                     <CheckCircle className="mr-2 text-indigo-400" size={16} />
                     Conference materials and study guides
-                  </li>
+                  </li> */}
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 text-indigo-400" size={16} />
                     Meals during all three days
@@ -211,7 +237,7 @@ const Registration = () => {
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 text-indigo-400" size={16} />
-                    Digital certificate of participation
+                    Certificate of participation
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 text-indigo-400" size={16} />
