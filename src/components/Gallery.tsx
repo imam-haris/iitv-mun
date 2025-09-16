@@ -140,7 +140,7 @@ const Gallery = () => {
           </div>
         </div>
 
-<div className="text-center">
+{/* <div className="text-center">
   <div className="bg-gradient-to-r from-purple-600/20 to-indigo-600/20 backdrop-blur-md rounded-2xl p-8 border border-purple-500/30">
     <h3 className="text-2xl font-bold text-white mb-4">Stay Connected</h3>
     <p className="text-purple-200 mb-6">
@@ -181,7 +181,7 @@ const Gallery = () => {
       </a>
     </div>
   </div>
-</div>
+</div> */}
       </div>
     </section>
   );
