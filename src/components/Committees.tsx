@@ -1,61 +1,82 @@
-import React from 'react';
-import { Shield, Globe, Gavel, Users, Building, Heart, Zap, TreePine } from 'lucide-react';
+// import React from "react";
+import {
+  Shield,
+  Globe,
+  Gavel,
+  Users,
+  Building,
+  Heart,
+  // Zap,
+  // TreePine,
+} from "lucide-react";
 
 const Committees = () => {
   const committees = [
     {
       icon: Shield,
-      name: 'United Nations Security Council',
-      acronym: 'UNSC',
-      agenda: 'Addressing Regional Conflicts and Peacekeeping Operations',
-      description: 'The premier body for maintaining international peace and security.',
+      name: "Disarmament and International Security Committee",
+      acronym: "DISEC",
+      agenda:
+        "Prevention of an arms race in outer space and the promotion of its peaceful use for the benefit of all humankind.",
+      description:
+        "The Disarmament and International Security Committee (DISEC) works on disarmament, arms control, and maintaining international peace and security.",
       delegates: 15,
-      level: 'Advanced'
+      level: "Advanced",
     },
     {
       icon: Globe,
-      name: 'United Nations General Assembly',
-      acronym: 'UNGA',
-      agenda: 'Sustainable Development Goals and Climate Action',
-      description: 'The main deliberative body of the United Nations.',
+      name: "United Nations Human Resources Committee",
+      acronym: "UNHRC",
+      agenda:
+        "Addressing staff welfare, mental health, and work-life balance within UN missions.",
+      description:
+        "The Human Resources Committee focuses on managing UN personnel, staff welfare, recruitment, training, and promoting an inclusive and efficient workforce.",
       delegates: 193,
-      level: 'Beginner'
+      level: "Beginner",
     },
     {
       icon: Gavel,
-      name: 'International Court of Justice',
-      acronym: 'ICJ',
-      agenda: 'Maritime Boundary Disputes',
-      description: 'The principal judicial organ of the United Nations.',
+      name: "Joint Parliamentary Committee",
+      acronym: "JPC",
+      agenda:
+        "Investigating policies, bills, or matters that require oversight by multiple parliamentary committees.",
+      description:
+        "The Joint Parliamentary Committee is a special committee formed by both houses of Parliament to examine specific issues, bills, or policies in detail and ensure effective oversight.",
       delegates: 30,
-      level: 'Advanced'
+      level: "Advanced",
     },
     {
       icon: Users,
-      name: 'United Nations Human Rights Council',
-      acronym: 'UNHRC',
-      agenda: 'Protection of Human Rights in Conflict Zones',
-      description: 'Promoting and protecting human rights around the globe.',
+      name: "United Nations Commission on the status of Women",
+      acronym: "CSW",
+      agenda:
+        "Promoting gender equality and the empowerment of women globally.",
+      description:
+        "The Commission on the Status of Women works to promote gender equality, protect women’s rights, and empower women worldwide.",
       delegates: 47,
-      level: 'Intermediate'
+      level: "Intermediate",
     },
     {
       icon: Building,
-      name: 'United Nations Economic and Social Council',
-      acronym: 'ECOSOC',
-      agenda: 'Economic Recovery Post-Pandemic',
-      description: 'Coordinating economic and social work of UN specialized agencies.',
+      name: "All India Political Party Meet",
+      acronym: "AIPPM",
+      agenda:
+        "Discussing national policy priorities and strategies for upcoming elections.",
+      description:
+        "The All India Political Party Meet is a gathering of political parties to discuss national policies, coordinate strategies, and address key issues affecting the country.",
       delegates: 54,
-      level: 'Intermediate'
+      level: "Advanced",
     },
     {
       icon: Heart,
-      name: 'World Health Organization',
-      acronym: 'WHO',
-      agenda: 'Global Health Security and Pandemic Preparedness',
-      description: 'Directing and coordinating international health work.',
+      name: "United Nations Environment Programme",
+      acronym: "UNEP",
+      agenda:
+        "Addressing climate change and promoting sustainable environmental practices worldwide.",
+      description:
+        "he United Nations Environment Programme works to protect the environment, promote sustainability, and address global ecological challenges.",
       delegates: 40,
-      level: 'Beginner'
+      level: "Beginner",
     },
     // {
     //   icon: Zap,
@@ -77,17 +98,24 @@ const Committees = () => {
     // }
   ];
 
-  const getLevelColor = (level:String) => {
+  const getLevelColor = (level: string) => {
     switch (level) {
-      case 'Beginner': return 'bg-green-500/20 text-green-400 border-green-500/30';
-      case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-      case 'Advanced': return 'bg-red-500/20 text-red-400 border-red-500/30';
-      default: return 'bg-purple-500/20 text-purple-400 border-purple-500/30';
+      case "Beginner":
+        return "bg-green-500/20 text-green-400 border-green-500/30";
+      case "Intermediate":
+        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
+      case "Advanced":
+        return "bg-red-500/20 text-red-400 border-red-500/30";
+      default:
+        return "bg-purple-500/20 text-purple-400 border-purple-500/30";
     }
   };
 
   return (
-    <section id="committees" className="py-20 bg-[#1f073c] relative overflow-hidden">
+    <section
+      id="committees"
+      className="py-20 bg-[#1f073c] relative overflow-hidden"
+    >
       {/* Sparkles and visual effects */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-4 left-1/4 w-20 h-20 border-2 border-purple-400/20 rounded-full"></div>
@@ -99,10 +127,14 @@ const Committees = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Committees</span>
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+              Committees
+            </span>
           </h2>
           <p className="text-xl text-purple-300 max-w-3xl mx-auto">
-            Engage with diverse international bodies and tackle pressing global challenges across multiple domains
+            Engage with diverse international bodies and tackle pressing global
+            challenges across multiple domains
           </p>
         </div>
 
@@ -118,21 +150,39 @@ const Committees = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold text-white">{committee.name}</h3>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getLevelColor(committee.level)}`}>
+                    <h3 className="text-xl font-bold text-white">
+                      {committee.name}
+                    </h3>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium border ${getLevelColor(
+                        committee.level
+                      )}`}
+                    >
                       {committee.level}
                     </span>
                   </div>
-                  <p className="text-purple-400 font-medium mb-2">{committee.acronym}</p>
-                  <p className="text-purple-200 text-sm mb-4">{committee.description}</p>
+                  <p className="text-purple-400 font-medium mb-2">
+                    {committee.acronym}
+                  </p>
+                  <p className="text-purple-200 text-sm mb-4">
+                    {committee.description}
+                  </p>
                   <div className="space-y-2">
                     <div className="bg-purple-900/30 rounded-lg p-3">
-                      <p className="text-white font-medium text-sm mb-1">Agenda:</p>
-                      <p className="text-purple-200 text-sm">{committee.agenda}</p>
+                      <p className="text-white font-medium text-sm mb-1">
+                        Agenda:
+                      </p>
+                      <p className="text-purple-200 text-sm">
+                        {committee.agenda}
+                      </p>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-purple-300">Delegates: {committee.delegates}</span>
-                      <span className="text-purple-300">Level: {committee.level}</span>
+                      <span className="text-purple-300">
+                        Delegates: {committee.delegates}
+                      </span>
+                      <span className="text-purple-300">
+                        Level: {committee.level}
+                      </span>
                     </div>
                   </div>
                 </div>

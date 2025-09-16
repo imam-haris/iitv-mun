@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import logo from '../assets/logo.png.png'; // Adjust path if needed
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
   onRegisterClick: () => void;
@@ -10,10 +9,10 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Committees', href: '#committees' },
-    { name: 'Secretariat', href: '#secretariat' },
-    { name: 'Gallery', href: '#gallery' },
+    { name: "Home", href: "#home" },
+    { name: "Committees", href: "#committees" },
+    { name: "Secretariat", href: "#secretariat" },
+    { name: "Gallery", href: "#gallery" },
     // { name: 'FAQ', href: '#faq' },
   ];
 
