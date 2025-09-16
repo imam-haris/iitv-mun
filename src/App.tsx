@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Committees from './components/Committees';
-import Secretariat from './components/Secretariat';
-import Gallery from './components/Gallery';
+import React, { useEffect, useState } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Committees from "./components/Committees";
+import Secretariat from "./components/Secretariat";
+import Gallery from "./components/Gallery";
 // import FAQ from './components/FAQ';
-import Registration from './components/Registration';
-import Footer from './components/Footer';
+import Registration from "./components/Registration";
+import Footer from "./components/Footer";
 
 function App() {
   const [showRegistration, setShowRegistration] = useState(false);
 
+  useEffect(() => {
+    if (showRegistration) {
+      document.body.style.overflow = "hidden"; // lock scroll
+    } else {
+      document.body.style.overflow = "auto"; // restore scroll
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup
+    };
+  }, [showRegistration]);
+
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 scroll-smooth">
       <Header onRegisterClick={() => setShowRegistration(true)} />
-      <Hero onRegisterClick={() => setShowRegistration(true)}/>
+      <Hero onRegisterClick={() => setShowRegistration(true)} />
       <About />
       <Committees />
       <Secretariat />
@@ -32,7 +44,9 @@ function App() {
               ✕
             </button>
             <div className="overflow-y-auto max-h-[90vh] pr-4">
-              <Registration />
+              <Registration
+                closeRegistration={() => setShowRegistration(false)}
+              />
             </div>
           </div>
         </div>
