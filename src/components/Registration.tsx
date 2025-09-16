@@ -967,24 +967,22 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
   const committees = [
     {
       name: "Disarmament and International Security Committee",
-      fee: 1500,
       level: "Advanced",
     },
     {
       name: "United Nations Human Resources Committee",
-      fee: 1500,
       level: "Beginner",
     },
-    { name: "Joint Parliamentary Committee", fee: 1500, level: "Advanced" },
+    { name: "Joint Parliamentary Committee", 
+      level: "Advanced" },
     {
       name: "United Nations Commission on the status of Women",
-      fee: 1500,
       level: "Intermediate",
     },
-    { name: "All India Political Party Meet", fee: 1500, level: "Advanced" },
+    { name: "All India Political Party Meet",
+     level: "Advanced" },
     {
       name: "United Nations Environment Programme",
-      fee: 1500,
       level: "Beginner",
     },
   ];
