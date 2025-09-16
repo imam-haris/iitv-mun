@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   onRegisterClick: () => void;
@@ -9,11 +10,11 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Committees", href: "#committees" },
-    { name: "Secretariat", href: "#secretariat" },
-    { name: "Gallery", href: "#gallery" },
-    // { name: 'FAQ', href: '#faq' },
+    { name: "Home", href: "/" },
+    { name: "Committees", href: "/committees" },
+    { name: "Secretariat", href: "/secretariat" },
+    { name: "Gallery", href: "/gallery" },
+    // { name: 'FAQ', href: '/faq' },
   ];
 
   return (
@@ -26,13 +27,13 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <button
               onClick={onRegisterClick}
@@ -56,14 +57,14 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
           <div className="md:hidden mt-4 pb-4 border-t border-purple-500/20">
             <nav className="flex flex-col space-y-3 pt-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <button
                 onClick={() => {

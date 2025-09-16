@@ -1,64 +1,67 @@
-import React from 'react';
-import { Crown, Star, Users, Award } from 'lucide-react';
+import React from "react";
+import { Crown, Star, Users } from "lucide-react";
 
 const Secretariat = () => {
   const secretariatMembers = [
     {
-      name: 'Abhishek Anand',
-      position: 'Secretary General',
-      bio: 'A spirited force in a small frame, he’s the second-gen soul of IIT BHU MUN—quietly commanding, endlessly supportive, and proof that stature is measured by impact, not inches.',
-      icon: Crown
+      name: "Abhishek Anand",
+      position: "Secretary General",
+      bio: "A spirited force in a small frame, he’s the second-gen soul of IIT BHU MUN—quietly commanding, endlessly supportive, and proof that stature is measured by impact, not inches.",
+      icon: Crown,
     },
     {
-      name: 'Kamal Banna',
-      position: 'Director General',
-      bio: 'Our fire-forged Director General—steering the team with sharp precision, a fierce drive, and just the right spark of anger when excellence demands it.',
-      icon: Star
+      name: "Kamal Banna",
+      position: "Director General",
+      bio: "Our fire-forged Director General—steering the team with sharp precision, a fierce drive, and just the right spark of anger when excellence demands it.",
+      icon: Star,
     },
     {
-      name: 'Dhruv Yadav',
-      position: 'Head of Operations',
-      bio: 'A mischievous marvel with a boyish grin, but when duty calls, he’s ten steps ahead, turning chaos into clockwork with effortless flair.',
-      icon: Users
+      name: "Dhruv Yadav",
+      position: "Head of Operations",
+      bio: "A mischievous marvel with a boyish grin, but when duty calls, he’s ten steps ahead, turning chaos into clockwork with effortless flair.",
+      icon: Users,
     },
     {
-      name: 'Devashish Tripathi',
-      position: 'Head of Marketing',
-      bio: 'A true Varanasi virtuoso and deal-making dynamo, blending charm and street-smart strategy to squeeze gold from every gully like a textbook baniya with a masterstroke.',
-      icon: Users
+      name: "Devashish Tripathi",
+      position: "Head of Marketing",
+      bio: "A true Varanasi virtuoso and deal-making dynamo, blending charm and street-smart strategy to squeeze gold from every gully like a textbook baniya with a masterstroke.",
+      icon: Users,
     },
     {
-      name: 'Anvita Srivastava',
-      position: 'Head of Committee Affairs',
-      image: 'image-url-here',
-      bio: 'The quiet powerhouse whose academic brilliance is only rivaled by her relentless commitment, gracefully carrying the core of the committee on shoulders steadier than most storms.',
-      icon: Users
+      name: "Anvita Srivastava",
+      position: "Head of Committee Affairs",
+      image: "image-url-here",
+      bio: "The quiet powerhouse whose academic brilliance is only rivaled by her relentless commitment, gracefully carrying the core of the committee on shoulders steadier than most storms.",
+      icon: Users,
     },
     {
-      name: 'Akansha',
-      position: 'Head of Public Relations',
-      image: 'image-url-here',
-      bio: 'A natural fit, blending professionalism with warmth, her friendliness not just a trait but a strategy, building bridges with a smile that speaks louder than any pitch.',
-      icon: Users
+      name: "Akansha",
+      position: "Head of Public Relations",
+      image: "image-url-here",
+      bio: "A natural fit, blending professionalism with warmth, her friendliness not just a trait but a strategy, building bridges with a smile that speaks louder than any pitch.",
+      icon: Users,
     },
     {
-      name: 'Raghav Bansal',
-      position: 'Head of Publicity',
-      image: 'image-url-here',
-      bio: 'The ever-charming Punjabi munda, sprinkling dildari in every direction, turning strangers into supporters with a grin and a perfectly timed “Oye hoye!”',
-      icon: Users
+      name: "Raghav Bansal",
+      position: "Head of Publicity",
+      image: "image-url-here",
+      bio: "The ever-charming Punjabi munda, sprinkling dildari in every direction, turning strangers into supporters with a grin and a perfectly timed “Oye hoye!”",
+      icon: Users,
     },
     {
-      name: 'Chahat Chauhan',
-      position: 'Head of Creative Affairs',
-      image: 'image-url-here',
-      bio: 'An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.',
-      icon: Users
-    }
+      name: "Chahat Chauhan",
+      position: "Head of Creative Affairs",
+      image: "image-url-here",
+      bio: "An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.",
+      icon: Users,
+    },
   ];
 
   return (
-    <section id="secretariat" className="py-20 bg-[#1f073c] relative overflow-hidden">
+    <section
+      id="secretariat"
+      className="py-20 bg-[#1f073c] relative overflow-hidden"
+    >
       {/* Background sparkles */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-4 left-1/4 w-20 h-20 border-2 border-purple-400/20 rounded-full"></div>
@@ -67,13 +70,17 @@ const Secretariat = () => {
         <div className="absolute bottom-1 right-1/3 w-1 h-32 bg-gradient-to-b from-purple-300/30 to-transparent rotate-12"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 pt-[40px] relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Secretariat</span>
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+              Secretariat
+            </span>
           </h2>
           <p className="text-xl text-purple-300 max-w-3xl mx-auto">
-            Meet the dedicated team of experienced leaders who will guide you through this extraordinary diplomatic journey
+            Meet the dedicated team of experienced leaders who will guide you
+            through this extraordinary diplomatic journey
           </p>
         </div>
 
@@ -95,8 +102,12 @@ const Secretariat = () => {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                  <p className="text-purple-400 font-medium mb-2">{member.position}</p>
+                  <h3 className="text-xl font-bold text-white mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-purple-400 font-medium mb-2">
+                    {member.position}
+                  </p>
                   <p className="text-purple-200 text-sm mb-3">{member.bio}</p>
                 </div>
               </div>
