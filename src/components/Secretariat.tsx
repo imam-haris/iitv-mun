@@ -6,24 +6,28 @@ const Secretariat = () => {
     {
       name: "Abhishek Anand",
       position: "Secretary General",
+      image: "image-url-here",
       bio: "A spirited force in a small frame, he’s the second-gen soul of IIT BHU MUN—quietly commanding, endlessly supportive, and proof that stature is measured by impact, not inches.",
       icon: Crown,
     },
     {
       name: "Kamal Banna",
       position: "Director General",
+      image: "image-url-here",
       bio: "Our fire-forged Director General—steering the team with sharp precision, a fierce drive, and just the right spark of anger when excellence demands it.",
       icon: Star,
     },
     {
       name: "Dhruv Yadav",
       position: "Head of Operations",
+      image: "image-url-here",
       bio: "A mischievous marvel with a boyish grin, but when duty calls, he’s ten steps ahead, turning chaos into clockwork with effortless flair.",
       icon: Users,
     },
     {
       name: "Devashish Tripathi",
       position: "Head of Marketing",
+      image: "image-url-here",
       bio: "A true Varanasi virtuoso and deal-making dynamo, blending charm and street-smart strategy to squeeze gold from every gully like a textbook baniya with a masterstroke.",
       icon: Users,
     },
@@ -51,7 +55,7 @@ const Secretariat = () => {
     {
       name: "Chahat Chauhan",
       position: "Head of Creative Affairs",
-      image: '',
+      image: "image-url-here",
       bio: "An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.",
       icon: Users,
     },
