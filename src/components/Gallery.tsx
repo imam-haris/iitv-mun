@@ -3,9 +3,9 @@ import { Camera, Play, Award, Users } from 'lucide-react';
 import events from '../assets/events.jpg';
 import final from '../assets/final.jpg';
 import group_2 from '../assets/group_2.jpg';
-import group from '../assets/group.jpg';
+import delegate from '../assets/delegate.jpg';
 import IAS from '../assets/IAS.jpg';
-import marketing from '../assets/marketing.jpg';
+import session from '../assets/session.jpg';
 import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 const Gallery = () => {
   const galleryItems = [
@@ -29,19 +29,19 @@ const Gallery = () => {
     },
     {
       type: 'image',
-      src: group,
+      src: delegate,
       title: 'Award Ceremony',
       description: 'Recognizing outstanding delegates'
     },
     {
       type: 'image',
       src: IAS,
-      title: 'Cultural Evening',
-      description: 'Celebrating diversity and unity'
+      title: 'Guest Session',
+      description: 'Inspiring talk by IAS Officer'
     },
     {
       type: 'image',
-      src: marketing,
+      src: session,
       title: 'Committee Sessions',
       description: 'Memorable conclusion to an amazing conference'
     }

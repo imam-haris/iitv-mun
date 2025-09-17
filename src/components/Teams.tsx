@@ -30,7 +30,7 @@ const teams = [
       "Harish",
       "Mokshita Kiran",
       "Monish Aryan",
-      "Seban",
+      "Sebastian",
       "Suryansh Singh",
       "Kritika Bansal",
       "Vansh Gilhotra",
@@ -42,7 +42,7 @@ const teams = [
     members: [
       "Aishwarya Pandey",
       "Anushka Tiwari",
-      "Illori Gupta",
+      "Ilori Gupta",
       "Kalash",
       "Pradhyumn Mangal",
       "Prakhar Vedant",
