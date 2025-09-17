@@ -33,6 +33,8 @@ const teams = [
       "Seban",
       "Suryansh Singh",
       "Kritika Bansal",
+      "Vansh Gilhotra",
+      "Junaid Muhammad"
     ],
   },
   {
@@ -40,11 +42,10 @@ const teams = [
     members: [
       "Aishwarya Pandey",
       "Anushka Tiwari",
-      "Dhruva Raut",
       "Illori Gupta",
       "Kalash",
       "Pradhyumn Mangal",
-      "Prakhar Rai",
+      "Prakhar Vedant",
       "Khushi",
       "Utkarsh",
       "Vansh Aggarwal",
