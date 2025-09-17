@@ -86,8 +86,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-purple-200 hover:text-purple-300 transition-colors text-sm"
                   >
                     {link.name}
@@ -102,12 +102,20 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="text-purple-400" size={16} />
-                <span className="text-purple-200 text-sm">iitbhumun2025@gmail.com</span>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=Secretariat@iitbhumun.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-200 text-sm"
+                >
+                  Secretariat@iitbhumun.com
+                </a>
+
               </div>
-              <div className="flex items-center space-x-3">
+              {/* <div className="flex items-center space-x-3">
                 <Phone className="text-purple-400" size={16} />
-                <span className="text-purple-200 text-sm">+91-9999999999</span>
-              </div>
+                <a className="text-purple-200 text-sm">+91-9999999999</a>
+              </div> */}
               <div className="flex items-center space-x-3">
                 <MapPin className="text-purple-400" size={16} />
                 <span className="text-purple-200 text-sm">IIT BHU, Varanasi, India</span>

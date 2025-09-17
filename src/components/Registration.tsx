@@ -43,6 +43,7 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
     {
       name: "Disarmament and International Security Committee",
       level: "Advanced",
+
     },
     {
       name: "United Nations Human Resources Committee",
@@ -156,17 +157,17 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
     }
   };
 
-  const getCommitteeFee = () => {
-    const selected = committees.find((c) => c.name === formData.committee1);
-    return selected ? selected.fee : 0;
-  };
+  // const getCommitteeFee = () => {
+  //   const selected = committees.find((c) => c.name === formData.committee1);
+  //   return selected ? selected.fee : 0;
+  // };
 
-  const getTotalFee = () => {
-    let total = getCommitteeFee();
-    if (formData.accommodation) total += 2000;
-    if (formData.delegation) total += 3000;
-    return total;
-  };
+  // const getTotalFee = () => {
+  //   let total = getCommitteeFee();
+  //   if (formData.accommodation) total += 2000;
+  //   if (formData.delegation) total += 3000;
+  //   return total;
+  // };
 
   return (
     <section id="register" className="py-20 bg-[#0f051e] relative overflow-hidden">
@@ -421,8 +422,8 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between text-indigo-200">
-                    <span>Committee Fee:</span>
-                    <span>₹{getCommitteeFee()}</span>
+                    {/* <span>Committee Fee:</span>
+                    <span>₹{getCommitteeFee()}</span> */}
                   </div>
                   {formData.accommodation && (
                     <div className="flex justify-between text-indigo-200">
@@ -439,7 +440,7 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                   <div className="border-t border-indigo-500/30 pt-3">
                     <div className="flex justify-between text-white font-bold text-lg">
                       <span>Total Amount:</span>
-                      <span>₹{getTotalFee()}</span>
+                      <span>₹1699</span>
                     </div>
                   </div>
                 </div>

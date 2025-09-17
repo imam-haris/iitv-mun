@@ -12,19 +12,19 @@ const Gallery = () => {
     {
       type: 'image',
       src: events,
-      title: 'Opening Ceremony 2024',
-      description: 'Grand inauguration with distinguished guests'
+      title: 'Cultural Evening',
+      description: 'Celebrating diversity and unity'
     },
     {
       type: 'image',
       src: final,
-      title: 'Committee Sessions',
-      description: 'Intense diplomatic discussions in progress'
+      title: 'Closing Ceremony',
+      description: 'Memorable events with an amazing team'
     },
     {
       type: 'image',
       src: group_2,
-      title: 'Delegate Networking',
+      title: 'The Secretariat',
       description: 'Building connections and friendships'
     },
     {
@@ -42,7 +42,7 @@ const Gallery = () => {
     {
       type: 'image',
       src: marketing,
-      title: 'Closing Ceremony',
+      title: 'Committee Sessions',
       description: 'Memorable conclusion to an amazing conference'
     }
   ];

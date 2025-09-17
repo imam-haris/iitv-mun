@@ -20,7 +20,7 @@ const Committees = () => {
         "Prevention of an arms race in outer space and the promotion of its peaceful use for the benefit of all humankind.",
       description:
         "The Disarmament and International Security Committee (DISEC) works on disarmament, arms control, and maintaining international peace and security.",
-      delegates: 15,
+      // delegates: 15,
       level: "Advanced",
     },
     {
@@ -31,7 +31,7 @@ const Committees = () => {
         "Addressing staff welfare, mental health, and work-life balance within UN missions.",
       description:
         "The Human Resources Committee focuses on managing UN personnel, staff welfare, recruitment, training, and promoting an inclusive and efficient workforce.",
-      delegates: 193,
+      // delegates: 193,
       level: "Beginner",
     },
     {
@@ -42,7 +42,7 @@ const Committees = () => {
         "Investigating policies, bills, or matters that require oversight by multiple parliamentary committees.",
       description:
         "The Joint Parliamentary Committee is a special committee formed by both houses of Parliament to examine specific issues, bills, or policies in detail and ensure effective oversight.",
-      delegates: 30,
+      // delegates: 30,
       level: "Advanced",
     },
     {
@@ -53,7 +53,7 @@ const Committees = () => {
         "Promoting gender equality and the empowerment of women globally.",
       description:
         "The Commission on the Status of Women works to promote gender equality, protect women’s rights, and empower women worldwide.",
-      delegates: 47,
+      // delegates: 47,
       level: "Intermediate",
     },
     {
@@ -64,7 +64,7 @@ const Committees = () => {
         "Discussing national policy priorities and strategies for upcoming elections.",
       description:
         "The All India Political Party Meet is a gathering of political parties to discuss national policies, coordinate strategies, and address key issues affecting the country.",
-      delegates: 54,
+      // delegates: 54,
       level: "Advanced",
     },
     {
@@ -74,8 +74,8 @@ const Committees = () => {
       agenda:
         "Addressing climate change and promoting sustainable environmental practices worldwide.",
       description:
-        "he United Nations Environment Programme works to protect the environment, promote sustainability, and address global ecological challenges.",
-      delegates: 40,
+        "The United Nations Environment Programme works to protect the environment, promote sustainability, and address global ecological challenges.",
+      // delegates: 40,
       level: "Beginner",
     },
     // {
@@ -177,9 +177,9 @@ const Committees = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-purple-300">
+                      {/* <span className="text-purple-300">
                         Delegates: {committee.delegates}
-                      </span>
+                      </span> */}
                       <span className="text-purple-300">
                         Level: {committee.level}
                       </span>

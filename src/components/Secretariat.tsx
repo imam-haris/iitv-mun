@@ -1,6 +1,8 @@
 import React from "react";
 import { Crown, Star, Users } from "lucide-react";
-
+import anvitaImg from "../assets/anvita.jpg";
+import creativeImg from "../assets/creative.jpg";
+import harisImg from "../assets/haris.jpg";
 const Secretariat = () => {
   const secretariatMembers = [
     {
@@ -18,10 +20,10 @@ const Secretariat = () => {
       icon: Star,
     },
     {
-      name: "Dhruv Yadav",
-      position: "Head of Operations",
-      image: "image-url-here",
-      bio: "A mischievous marvel with a boyish grin, but when duty calls, he’s ten steps ahead, turning chaos into clockwork with effortless flair.",
+      name: "Anvita Srivastava",
+      position: "Head of Committee Affairs",
+      image: anvitaImg,
+      bio: "The quiet powerhouse whose academic brilliance is only rivaled by her relentless commitment, gracefully carrying the core of the committee on shoulders steadier than most storms.",
       icon: Users,
     },
     {
@@ -31,11 +33,11 @@ const Secretariat = () => {
       bio: "A true Varanasi virtuoso and deal-making dynamo, blending charm and street-smart strategy to squeeze gold from every gully like a textbook baniya with a masterstroke.",
       icon: Users,
     },
-    {
-      name: "Anvita Srivastava",
-      position: "Head of Committee Affairs",
+      {
+      name: "Dhruv Yadav",
+      position: "Head of Operations",
       image: "image-url-here",
-      bio: "The quiet powerhouse whose academic brilliance is only rivaled by her relentless commitment, gracefully carrying the core of the committee on shoulders steadier than most storms.",
+      bio: "A mischievous marvel with a boyish grin, but when duty calls, he’s ten steps ahead, turning chaos into clockwork with effortless flair.",
       icon: Users,
     },
     {
@@ -55,14 +57,14 @@ const Secretariat = () => {
     {
       name: "Chahat Chauhan",
       position: "Head of Creative Affairs",
-      image: "image-url-here",
+      image: creativeImg,
       bio: "An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.",
       icon: Users,
     },
     {
       name: "Haris Imam",
       position: "Head of Technical Affairs",
-      image: "image-url-here",
+      image: harisImg,
       bio: "I believe technology should stay in the background while ideas shine in the spotlight. At IIT BHU MUN, my role as Tech Head is to ensure that happens.",
       icon: Users,
     },
