@@ -64,12 +64,10 @@ const Hero = ({ onRegisterClick = () => {} }) => {
       </div>
       <div className="flex justify-center items-center min-h-screen relative z-10 px-4 text-center">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            IITBHU
-          </h1>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            MODEL UNITED NATIONS
-          </h1>
+<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight break-words">
+  IITBHU <br  /> MODEL UNITED NATIONS
+</h1>
+
           <p className="text-xl md:text-2xl text-purple-300 font-medium mt-4">
             RISE. SPEAK. RESOLVE.
           </p>
