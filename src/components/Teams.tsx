@@ -16,13 +16,24 @@ const teams = [
       "Ujjawal Kumar Nath"
     ],
   },
-  {
-    name: "Creative Affairs Team",
-    members: ["Gagan", "Aaditya ", "Ananya", "Ayush" ],
-  },
-  {
+    {
     name: "Public Relations Team",
     members: ["Vansh Shrivas", "Vansh Sharma", "Tanmayee", "Rajshree Chaudhry", "Maharshi Patle"],
+  },
+  {
+    name: "Publicity Team",
+    members: [
+      "Adarsh Pandey",
+      "Akriti",
+      "Dhirgayu",
+      "Divit Sood",
+      "Harish",
+      "Mokshita Kiran",
+      "Monish Aryan",
+      "Seban",
+      "Suryansh Singh",
+      "Kritika Bansal",
+    ],
   },
   {
     name: "Marketing Team",
@@ -39,20 +50,9 @@ const teams = [
       "Vansh Aggarwal",
     ],
   },
-  {
-    name: "Publicity Team",
-    members: [
-      "Adarsh Pandey",
-      "Akriti",
-      "Dhirgayu",
-      "Divit Sood",
-      "Harish",
-      "Mokshita Kiran",
-      "Monish Aryan",
-      "Seban",
-      "Suryansh Singh",
-      "Kritika Bansal",
-    ],
+   {
+    name: "Creative Affairs Team",
+    members: ["Gagan", "Aaditya ", "Ananya", "Ayush" ],
   },
   {
     name: "Tech Team",
