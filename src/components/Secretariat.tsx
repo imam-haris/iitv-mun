@@ -51,7 +51,7 @@ const Secretariat = () => {
     {
       name: "Chahat Chauhan",
       position: "Head of Creative Affairs",
-      image: './src/assets/creative.jpg',
+      image: '',
       bio: "An introvert by nature, but when it comes to Creative Affairs, her ideas speak louder than words, weaving magic quietly and proving that brilliance doesn’t need a spotlight to shine.",
       icon: Users,
     },
