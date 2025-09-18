@@ -2,7 +2,8 @@ import React from "react";
 import anvitaImg from "../assets/anvita.jpg";
 import creativeImg from "../assets/creative.jpg";
 import harisImg from "../assets/haris.jpg";
-
+import ashmitImg from "../assets/ashmit.jpg";
+import kamalImg from "../assets/kamal3.jpg";
 const Secretariat = () => {
   const secretariatMembers = [
     {
@@ -13,7 +14,7 @@ const Secretariat = () => {
     {
       name: "Kamal Banna",
       position: "Director General",
-      image: "image-url-here",
+      image: kamalImg,
     },
     {
       name: "Anvita Srivastava",
@@ -53,7 +54,7 @@ const Secretariat = () => {
     {
       name: "Ashmit Singh",
       position: "Head of Internal Affairs",
-      image: "image-url-here",
+      image: ashmitImg,
     },
   ];
 

@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
     { name: "Secretariat", href: "/secretariat" },
     { name: "Gallery", href: "/gallery" },
     {name: "Sponsors", href: "/sponsors"},
-    // { name: 'FAQ', href: '/faq' },
+    { name: 'FAQ', href: '/FAQ' },
   ];
 
   return (

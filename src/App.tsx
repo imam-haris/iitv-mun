@@ -5,6 +5,7 @@ import About from "./components/About";
 import Committees from "./components/Committees";
 // import Secretariat from "./components/Secretariat";
 // import Gallery from "./components/Gallery";
+import FAQ from "./components/FAQ";
 import Sponsors from "./components/sponsors";
 import Teams from "./components/Teams";
 import  ScrollToTop from "./ScrollToTop";
@@ -102,6 +103,17 @@ function App() {
               <div>
                 <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Sponsors />
+                <Footer />
+              </div>
+            }
+          />
+           <Route
+            path="/FAQ"
+            element={
+              <div>
+                <Header onRegisterClick={() => setShowRegistration(true)} />
+                {/* <Sponsors /> */}
+                <FAQ />
                 <Footer />
               </div>
             }
