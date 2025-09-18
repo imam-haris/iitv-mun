@@ -4,6 +4,7 @@ import creativeImg from "../assets/creative.jpg";
 import harisImg from "../assets/haris.jpg";
 import ashmitImg from "../assets/ashmit.jpg";
 import kamalImg from "../assets/kamal3.jpg";
+import raghavImg from "../assets/raghav.jpeg";
 const Secretariat = () => {
   const secretariatMembers = [
     {
@@ -39,7 +40,7 @@ const Secretariat = () => {
     {
       name: "Raghav Bansal",
       position: "Head of Publicity",
-      image: "image-url-here",
+      image: raghavImg,
     },
     {
       name: "Chahat Chauhan",

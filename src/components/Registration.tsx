@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { User, CreditCard, CheckCircle, Calendar } from "lucide-react";
+
 import { supabase } from "../../supabaseClient";
 
 interface RegistrationProps {
   closeRegistration: () => void;
+  onRegisterSuccess: () => void;
 }
 
 interface FormDataType {
@@ -21,7 +23,10 @@ interface FormDataType {
   photo: File | null;
 }
 
-const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
+const Registration: React.FC<RegistrationProps> = ({
+  closeRegistration,
+  onRegisterSuccess,
+}) => {
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
@@ -42,23 +47,24 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
   const committees = [
     {
       name: "Disarmament and International Security Committee",
+      fee: 1500,
       level: "Advanced",
-
     },
     {
       name: "United Nations Human Resources Committee",
+      fee: 1500,
       level: "Beginner",
     },
-    { name: "Joint Parliamentary Committee", 
-      level: "Advanced" },
+    { name: "Joint Parliamentary Committee", fee: 1500, level: "Advanced" },
     {
       name: "United Nations Commission on the status of Women",
+      fee: 1500,
       level: "Intermediate",
     },
-    { name: "All India Political Party Meet",
-     level: "Advanced" },
+    { name: "All India Political Party Meet", fee: 1500, level: "Advanced" },
     {
       name: "United Nations Environment Programme",
+      fee: 1500,
       level: "Beginner",
     },
   ];
@@ -67,10 +73,11 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value, type } = e.target;
+
     let fieldValue: string | boolean = value;
 
     if (type === "checkbox") {
-      fieldValue = (e.target as HTMLInputElement).checked;
+      fieldValue = (e.target as HTMLInputElement).checked; // cast to HTMLInputElement
     }
 
     setFormData((prev) => ({
@@ -90,12 +97,14 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // setLoading(true);
+
     try {
       let photoURL = "";
 
       if (formData.photo) {
         const fileName = `${Date.now()}-${formData.photo.name}`;
-        const filePath = `registrations/${fileName}`;
+
+        const filePath = `registrations/${Date.now()}-${formData.photo.name}`;
 
         const { error: uploadError } = await supabase.storage
           .from("payment")
@@ -105,7 +114,9 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
 
         if (uploadError) throw uploadError;
 
-        const { data } = supabase.storage.from("payment").getPublicUrl(filePath);
+        const { data } = supabase.storage
+          .from("payment")
+          .getPublicUrl(fileName);
         photoURL = data.publicUrl;
       }
 
@@ -132,7 +143,6 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
       if (insertError) throw insertError;
 
       alert("Registration submitted successfully!");
-
       setFormData({
         name: "",
         email: "",
@@ -148,6 +158,8 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
         photo: null,
       });
 
+      onRegisterSuccess();
+
       closeRegistration();
     } catch (error) {
       console.error("Registration error:", error);
@@ -157,20 +169,23 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
     }
   };
 
-  // const getCommitteeFee = () => {
-  //   const selected = committees.find((c) => c.name === formData.committee1);
-  //   return selected ? selected.fee : 0;
-  // };
+  const getCommitteeFee = () => {
+    const selected = committees.find((c) => c.name === formData.committee1);
+    return selected ? selected.fee : 0;
+  };
 
-  // const getTotalFee = () => {
-  //   let total = getCommitteeFee();
-  //   if (formData.accommodation) total += 2000;
-  //   if (formData.delegation) total += 3000;
-  //   return total;
-  // };
+  const getTotalFee = () => {
+    let total = getCommitteeFee();
+    if (formData.accommodation) total += 500;
+    if (formData.delegation) total += 2000;
+    return total;
+  };
 
   return (
-    <section id="register" className="py-20 bg-[#0f051e] relative overflow-hidden">
+    <section
+      id="register"
+      className="py-20 bg-[#0f051e] relative overflow-hidden"
+    >
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -194,7 +209,6 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                 Registration Form
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Info */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -226,7 +240,6 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                   </div>
                 </div>
 
-                {/* Phone + Institution */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -258,7 +271,6 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                   </div>
                 </div>
 
-                {/* City + Experience */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -286,11 +298,15 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                       className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors"
                     >
                       <option value="">Select experience level</option>
-                      <option value="beginner">Beginner (0-2 conferences)</option>
+                      <option value="beginner">
+                        Beginner (0-2 conferences)
+                      </option>
                       <option value="intermediate">
                         Intermediate (3-5 conferences)
                       </option>
-                      <option value="advanced">Advanced (6+ conferences)</option>
+                      <option value="advanced">
+                        Advanced (6+ conferences)
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -373,20 +389,20 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                       className="w-4 h-4 text-indigo-600 bg-indigo-900/30 border-indigo-500/30 rounded focus:ring-indigo-500"
                     />
                     <label className="ml-2 text-indigo-300">
-                      I need accommodation (+₹2000)
+                      I need accommodation (+₹500)
                     </label>
                   </div>
                   <div className="flex items-center">
-                    <input
+                    {/* <input
                       type="checkbox"
                       name="delegation"
                       checked={formData.delegation}
                       onChange={handleInputChange}
                       className="w-4 h-4 text-indigo-600 bg-indigo-900/30 border-indigo-500/30 rounded focus:ring-indigo-500"
-                    />
-                    <label className="ml-2 text-indigo-300">
+                    /> */}
+                    {/* <label className="ml-2 text-indigo-300">
                       I'm registering as part of a delegation (+₹3000)
-                    </label>
+                    </label> */}
                   </div>
                 </div>
 
@@ -412,7 +428,7 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
               </form>
             </div>
 
-            {/* Right Panel */}
+            {/* Right panel */}
             <div className="space-y-6">
               {/* Fee Structure */}
               <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-indigo-500/20">
@@ -422,25 +438,25 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between text-indigo-200">
-                    {/* <span>Committee Fee:</span>
-                    <span>₹{getCommitteeFee()}</span> */}
+                    <span>Committee Fee:</span>
+                    <span>₹{getCommitteeFee()}</span>
                   </div>
                   {formData.accommodation && (
                     <div className="flex justify-between text-indigo-200">
                       <span>Accommodation:</span>
-                      <span>₹2000</span>
+                      <span>₹500</span>
                     </div>
                   )}
-                  {formData.delegation && (
+                  {/* {formData.delegation && (
                     <div className="flex justify-between text-indigo-200">
                       <span>Delegation Fee:</span>
                       <span>₹3000</span>
                     </div>
-                  )}
+                  )} */}
                   <div className="border-t border-indigo-500/30 pt-3">
                     <div className="flex justify-between text-white font-bold text-lg">
                       <span>Total Amount:</span>
-                      <span>₹1699</span>
+                      <span>₹{getTotalFee()}</span>
                     </div>
                   </div>
                 </div>
@@ -453,17 +469,17 @@ const Registration: React.FC<RegistrationProps> = ({ closeRegistration }) => {
                   Important Dates
                 </h3>
                 <div className="space-y-3 text-indigo-200">
-                  <div className="flex justify-between">
+                  {/* <div className="flex justify-between">
                     <span>Early Bird Deadline:</span>
                     <span>Jan 15, 2025</span>
-                  </div>
-                  <div className="flex justify-between">
+                  </div> */}
+                  {/* <div className="flex justify-between">
                     <span>Regular Registration:</span>
                     <span>Feb 10, 2025</span>
-                  </div>
+                  </div> */}
                   <div className="flex justify-between">
                     <span>Conference Dates:</span>
-                    <span>Oct 31 – Nov 2, 2025</span>
+                    <span>Oct 31– Nov 2, 2025</span>
                   </div>
                 </div>
               </div>

@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import type { User } from "@supabase/supabase-js";
 import { Link } from "react-router-dom";
+
 
 interface HeaderProps {
   onRegisterClick: () => void;
+  onLogout: () => void;
+  user: User | null;
+  isRegistered: boolean;
+  loadingCheck: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
+const Header: React.FC<HeaderProps> = ({
+  onRegisterClick,
+  onLogout,
+  user,
+  isRegistered,
+  loadingCheck,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -15,68 +27,124 @@ const Header: React.FC<HeaderProps> = ({ onRegisterClick }) => {
     { name: "Secretariat", href: "/secretariat" },
     { name: "Gallery", href: "/gallery" },
     {name: "Sponsors", href: "/sponsors"},
-    { name: 'FAQ', href: '/FAQ' },
+    {name: "FAQ", href: "/faq"}
   ];
 
-  return (
-    // <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-[#1f073c]/10 ">
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1f073c]/1 backdrop-blur-lg shadow-md">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo section if needed */}
-          <div className="flex items-center space-x-3"></div>
+  const renderButtonText = () => {
+    if (!user) return "Login / Register";
+    if (loadingCheck) return "Checking...";
+    if (isRegistered) return "Registered";
+    return "Register";
+  };
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
-              >
-                {item.name}
-              </Link>
-            ))}
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1f073c]/1 backdrop-blur-lg shadow-md">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="flex items-center space-x-3"></div>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center space-x-4">
+          {navItems.map((item) => (
+            <span
+              key={item.name}
+              className="text-white hover:text-purple-300 transition-colors
+              duration-300 font-medium"
+            >
+              <Link to={item.href}>{item.name}</Link>
+            </span>
+          ))}
+
+          {!user ? (
             <button
               onClick={onRegisterClick}
-              className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-2 rounded-full text-white bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
             >
-              Register
+              {renderButtonText()}
             </button>
-          </nav>
+          ) : (
+            <>
+              <button
+                onClick={onRegisterClick}
+                disabled={isRegistered || loadingCheck}
+                className={`px-6 py-2 rounded-full text-white transition-all duration-300 ${
+                  isRegistered
+                    ? "bg-green-600 cursor-not-allowed"
+                    : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                }`}
+              >
+                {renderButtonText()}
+              </button>
 
-          {/* Mobile menu toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white p-2"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+              <button
+                onClick={onLogout}
+                className="px-4 py-2 rounded-full text-white bg-red-600 hover:bg-red-700 transition-all duration-300"
+              >
+                Logout
+              </button>
+            </>
+          )}
+        </nav>
 
-        {/* Mobile nav */}
+        {/* Mobile menu */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden text-white p-2"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-purple-500/20">
             <nav className="flex flex-col space-y-3 pt-4">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
-                  to={item.href}
+                  href={item.href}
                   className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
-              <button
-                onClick={() => {
-                  onRegisterClick();
-                  setIsMenuOpen(false);
-                }}
-                className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-purple-700 transition-all duration-300 text-center"
-              >
-                Register
-              </button>
+
+              {!user ? (
+                <button
+                  onClick={() => {
+                    onRegisterClick();
+                    setIsMenuOpen(false);
+                  }}
+                  className="px-6 py-2 rounded-full text-white bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 transition-all duration-300 text-center"
+                >
+                  {renderButtonText()}
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      onRegisterClick();
+                      setIsMenuOpen(false);
+                    }}
+                    disabled={isRegistered || loadingCheck}
+                    className={`px-6 py-2 rounded-full text-white transition-all duration-300 ${
+                      isRegistered
+                        ? "bg-green-600 cursor-not-allowed"
+                        : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                    } text-center`}
+                  >
+                    {renderButtonText()}
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      onLogout();
+                      setIsMenuOpen(false);
+                    }}
+                    className="px-4 py-2 rounded-full text-white bg-red-600 hover:bg-red-700 transition-all duration-300 text-center"
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
             </nav>
           </div>
         )}

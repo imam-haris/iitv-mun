@@ -1,68 +1,109 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Committees from "./components/Committees";
-// import Secretariat from "./components/Secretariat";
-// import Gallery from "./components/Gallery";
-import FAQ from "./components/FAQ";
-import Sponsors from "./components/sponsors";
-import Teams from "./components/Teams";
-import  ScrollToTop from "./ScrollToTop";
-import Registration from "./components/Registration";
-import Footer from "./components/Footer";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Secretariat from "./components/Secretariat";
 import Gallery from "./components/Gallery";
+import Registration from "./components/Registration";
+import Footer from "./components/Footer";
+import { supabase } from "../supabaseClient";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import type { User } from "@supabase/supabase-js";
+import ScrollToTop from "./ScrollToTop";
 import SecretaryGeneralLetter from "./components/SecretaryGeneralLetter";
+import Teams from "./components/Teams";
+import Sponsors from "./components/sponsors";
+import FAQ from "./components/FAQ";
 function App() {
+  const [user, setUser] = useState<User | null>(null);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [loadingCheck, setLoadingCheck] = useState(true);
   const [showRegistration, setShowRegistration] = useState(false);
 
-  useEffect(() => {
-    if (showRegistration) {
-      document.body.style.overflow = "hidden"; // lock scroll
-    } else {
-      document.body.style.overflow = "auto"; // restore scroll
-    }
+  // Check if user already registered in DB
+  const checkRegistration = async (email?: string) => {
+    const userEmail = email ?? user?.email;
+    if (!userEmail) return;
 
-    return () => {
-      document.body.style.overflow = "auto"; // cleanup
-    };
-  }, [showRegistration]);
+    setLoadingCheck(true);
+    const { data, error } = await supabase
+      .from("registrations")
+      .select("id")
+      .eq("email", userEmail)
+      .limit(1); // <- only get 1 row
+
+    if (error) {
+      console.error("Error checking registration:", error.message);
+      setIsRegistered(false);
+    } else {
+      setIsRegistered(data && data.length > 0); // true if at least 1 row exists
+    }
+    setLoadingCheck(false);
+  };
+
+  // On mount: get current session and listen for auth changes
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      const currentUser = data.session?.user ?? null;
+      setUser(currentUser);
+      if (currentUser) checkRegistration(currentUser.email);
+    });
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        const currentUser = session?.user ?? null;
+        setUser(currentUser);
+        if (currentUser) checkRegistration(currentUser.email);
+        else setIsRegistered(false);
+      }
+    );
+
+    return () => listener.subscription.unsubscribe();
+  }, []);
+
+  // Handle login / register button
+  const handleRegisterClick = async () => {
+    if (!user) {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+      });
+      if (error) alert(error.message);
+    } else {
+      setShowRegistration(true);
+    }
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) alert(error.message);
+    else {
+      setUser(null);
+      setIsRegistered(false);
+      setShowRegistration(false);
+    }
+  };
 
   return (
     <Router>
-       <ScrollToTop /> 
+      <ScrollToTop />
       <div className="min-h-screen bg-gray-900 scroll-smooth">
-        {/* <Header onRegisterClick={() => setShowRegistration(true)} />
-        <Hero onRegisterClick={() => setShowRegistration(true)} /> */}
-
-        {/* <About />
-      <Committees />
-      <Secretariat />
-      <Gallery /> */}
-        {/* <FAQ /> */}
-
+        <Header
+          user={user}
+          isRegistered={isRegistered}
+          loadingCheck={loadingCheck}
+          onRegisterClick={handleRegisterClick}
+          onLogout={handleLogout}
+        />
         <Routes>
           <Route
             path="/"
             element={
               <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
-                <Hero onRegisterClick={() => setShowRegistration(true)} />
+                <Hero onRegisterClick={handleRegisterClick} />
                 <About />
-                 <SecretaryGeneralLetter />
-                <Footer />
-              </div>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
-                <About />
-                <Footer />
+                <SecretaryGeneralLetter />
               </div>
             }
           />
@@ -70,9 +111,8 @@ function App() {
             path="/committees"
             element={
               <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Committees />
-                <Footer />
+                {/* <Footer /> */}
               </div>
             }
           />
@@ -80,10 +120,9 @@ function App() {
             path="/secretariat"
             element={
               <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Secretariat />
                 <Teams/>
-                <Footer />
+                {/* <footer /> */}
               </div>
             }
           />
@@ -91,39 +130,31 @@ function App() {
             path="/gallery"
             element={
               <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
                 <Gallery />
-                <Footer />
-              </div>
-            }
-          />
-            <Route
-            path="/sponsors"
-            element={
-              <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
-                <Sponsors />
-                <Footer />
               </div>
             }
           />
            <Route
-            path="/FAQ"
+            path="/sponsors"
             element={
               <div>
-                <Header onRegisterClick={() => setShowRegistration(true)} />
-                {/* <Sponsors /> */}
-                <FAQ />
-                <Footer />
+                <Sponsors />
               </div>
             }
           />
-          {/* <Route path="/secretariat" element={<Secretariat />} />
-        <Route path="/gallery" element={<Gallery />} />
-      </Routes> */}
+           <Route
+            path="/faq"
+            element={
+              <div>
+                <FAQ />
+              </div>
+            }
+          />
+          <Route path="/secretariat" element={<Secretariat />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
 
-        {showRegistration && (
+        {showRegistration && !isRegistered && (
           <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-center items-center overflow-y-auto">
             <div className="bg-[#1f073c] rounded-xl shadow-2xl w-[95%] max-w-6xl p-8 relative overflow-hidden">
               <button
@@ -135,13 +166,14 @@ function App() {
               <div className="overflow-y-auto max-h-[90vh] pr-4">
                 <Registration
                   closeRegistration={() => setShowRegistration(false)}
+                  onRegisterSuccess={checkRegistration}
                 />
               </div>
             </div>
           </div>
         )}
 
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );

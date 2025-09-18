@@ -158,7 +158,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-purple-500/20 pt-8">
+        {/* <div className="border-t border-purple-500/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-purple-300 text-sm mb-4 md:mb-0">
               © 2025 IIT BHU Model United Nations. All rights reserved.
@@ -175,7 +175,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

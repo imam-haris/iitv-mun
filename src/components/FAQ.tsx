@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import { Mail,ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -106,19 +106,22 @@ const FAQ = () => {
             <p className="text-purple-200 mb-6">
               Our support team is here to help! Reach out to us for personalized assistance with your queries.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:iitbhumun2025@gmail.com"
-                className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-              >
-                Email Support
-              </a>
-              <a
+            <div className="flex-col sm:flex-row gap-4 justify-center">
+                {/* <Mail className="text-purple-400" size={16} /> */}
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=Secretariat@iitbhumun.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                className="inline-block bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Secretariat@iitbhumun.com
+                </a>
+              {/* <a
                 href="tel:+919999999999"
                 className="inline-block bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
               >
                 Call Support
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
