@@ -4,8 +4,9 @@ import creativeImg from "../assets/creative.jpg";
 import harisImg from "../assets/haris.jpg";
 import ashmitImg from "../assets/ashmit.jpg";
 import kamalImg from "../assets/kamal3.jpg";
-import raghavImg from "../assets/raghav.jpeg";
-import abhishekImg from "../assets/abhishek.jpg";
+import raghavImg from "../assets/raghav2.jpeg";
+import abhishekImg from "../assets/abhishek2.jpg";
+import devaImg from "../assets/deva.jpeg";
 const Secretariat = () => {
   const secretariatMembers = [
     {
@@ -26,7 +27,7 @@ const Secretariat = () => {
     {
       name: "Devashish Tripathi",
       position: "Head of Marketing",
-      image: "image-url-here",
+      image: devaImg,
     },
     {
       name: "Dhruv Yadav",

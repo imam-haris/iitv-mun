@@ -7,7 +7,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'What is the registration fee for IITBHU MUN 2025?',
-      answer: 'The registration fee varies based on the committee you choose. Individual delegate fees range from ₹800 to ₹1500, while delegation fees (for schools/colleges) start from ₹5000. Early bird discounts are available until January 15th, 2025.'
+      answer: 'The registration fee varies based on the institute. Fee is ₹1199 and ₹699 for BHU and IIT students respectively. For outsiders it is ₹1799.'
     },
     {
       question: 'How do I register for the conference?',
@@ -23,15 +23,15 @@ const FAQ = () => {
     },
     {
       question: 'What is the dress code for the conference?',
-      answer: 'The dress code is formal/business attire for all three days. Men should wear formal suits or shirt with trousers and tie. Women should wear formal suits, sarees, or other professional attire.'
+      answer: 'The dress code is formal/business attire for two days and one day for traditional attire. '
     },
     {
       question: 'Can I participate if I\'m new to MUN?',
-      answer: 'Absolutely! We welcome delegates of all experience levels. We have committees specifically designed for beginners, and our experienced chairs will guide you through the procedures.'
+      answer: 'Absolutely! We welcome delegates of all experience levels. We have our experienced chairs will guide you through the procedures.'
     },
     {
       question: 'What should I prepare before the conference?',
-      answer: 'Study your committee\'s agenda thoroughly, research your country\'s position on the topic, and prepare your opening statement. We will provide detailed study guides and background materials after registration.'
+      answer: 'Study your committee\'s agenda thoroughly, research your country\'s position on the topic, and prepare your opening statement.'
     },
     {
       question: 'Are there any awards or recognition?',
@@ -39,12 +39,8 @@ const FAQ = () => {
     },
     {
       question: 'What is the cancellation policy?',
-      answer: 'Cancellations made before January 31st, 2025 are eligible for a 50% refund. No refunds will be provided for cancellations made after this date due to event planning constraints.'
+      answer: 'No cancellation policy.'
     },
-    {
-      question: 'How can I contact the organizing committee?',
-      answer: 'You can reach us through email at iitbhumun2025@gmail.com or call our helpline at +91-9999999999. Our team is available Monday to Friday, 10 AM to 6 PM.'
-    }
   ];
 
   const toggleFAQ = (index: number) => {
