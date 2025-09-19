@@ -55,7 +55,7 @@ const Registration: React.FC<RegistrationProps> = ({
       fee: 1500,
       // level: "Beginner",
     },
-    { name: "Joint Parliamentary Committee", fee: 1500 },
+    { name: "Joint Parliamentary Committee (JPC)", fee: 1500 },
     {
       name: "United Nations Commission on the status of Women (CSW)",
       fee: 1500,
