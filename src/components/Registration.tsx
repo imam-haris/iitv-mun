@@ -46,24 +46,24 @@ const Registration: React.FC<RegistrationProps> = ({
 
   const committees = [
     {
-      name: "Disarmament and International Security Committee",
+      name: "Disarmament and International Security Committee (DISEC)",
       fee: 1500,
       level: "Advanced",
     },
     {
-      name: "United Nations Human Resources Committee",
+      name: "United Nations Human Resources Committee (UNHRC)",
       fee: 1500,
       level: "Beginner",
     },
     { name: "Joint Parliamentary Committee", fee: 1500, level: "Advanced" },
     {
-      name: "United Nations Commission on the status of Women",
+      name: "United Nations Commission on the status of Women (CSW)",
       fee: 1500,
       level: "Intermediate",
     },
-    { name: "All India Political Party Meet", fee: 1500, level: "Advanced" },
+    { name: "All India Political Party Meet (AIPPM)", fee: 1500, level: "Advanced" },
     {
-      name: "United Nations Environment Programme",
+      name: "United Nations Environment Programme (UNEP)",
       fee: 1500,
       level: "Beginner",
     },
@@ -299,13 +299,13 @@ const Registration: React.FC<RegistrationProps> = ({
                     >
                       <option value="">Select experience level</option>
                       <option value="beginner">
-                        Beginner (0-2 conferences)
+                        Beginner (0-5 conferences)
                       </option>
                       <option value="intermediate">
-                        Intermediate (3-5 conferences)
+                        Intermediate (5-15 conferences)
                       </option>
                       <option value="advanced">
-                        Advanced (6+ conferences)
+                        Advanced (15+ conferences)
                       </option>
                     </select>
                   </div>
@@ -425,6 +425,9 @@ const Registration: React.FC<RegistrationProps> = ({
                 >
                   Register Now
                 </button>
+                <label className="ml-2 text-indigo-300">
+                      *Breakfast for only accomodated people
+                    </label>
               </form>
             </div>
 
@@ -493,7 +496,7 @@ const Registration: React.FC<RegistrationProps> = ({
                 <ul className="space-y-2 text-indigo-200">
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 text-indigo-400" size={16} />
-                    Meals during all three days
+                    Meals during all three days*
                   </li>
                   <li className="flex items-center">
                     <CheckCircle className="mr-2 text-indigo-400" size={16} />

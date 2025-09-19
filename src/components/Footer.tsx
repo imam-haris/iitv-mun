@@ -103,12 +103,12 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="text-purple-400" size={16} />
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=Secretariat@iitbhumun.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=secretariat@iitbhumun.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-200 text-sm"
                 >
-                  Secretariat@iitbhumun.com
+                  secretariat@iitbhumun.com
                 </a>
 
               </div>
@@ -146,12 +146,12 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Globe className="text-purple-400" size={16} />
                 <a
-                  href="https://www.iitbhumun.org"
+                  href="https://www.iitbhumun.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-200 text-sm hover:underline"
                 >
-                  www.iitbhumun.org
+                  www.iitbhumun.com
                 </a>
               </div>
             </div>

@@ -18,7 +18,7 @@ const SecretaryGeneralLetter: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg text-purple-300 max-w-3xl mx-auto">
-            A message of vision, dedication, and inspiration for IIT BHU MUN 2025.
+            A message of vision, dedication, and inspiration for IITBHU MUN 2025.
           </p>
         </div>
 
@@ -29,14 +29,14 @@ const SecretaryGeneralLetter: React.FC = () => {
           </p>
 
           <p className="text-purple-200 leading-relaxed mb-6">
-            It gives me immense pleasure to welcome you all to the IIT BHU Model
+            It gives me immense pleasure to welcome you all to the IITBHU Model
             United Nations 2025. Over the years, this conference has grown into a
             beacon of diplomacy, debate, and dialogue, bringing together some of
             the brightest minds from across the nation.
           </p>
 
           <p className="text-purple-200 leading-relaxed mb-6">
-            At IIT BHU MUN, we believe in empowering youth to think critically,
+            At IITBHU MUN, we believe in empowering youth to think critically,
             engage meaningfully, and propose innovative solutions to the world’s
             most pressing challenges. This year, our secretariat has worked
             tirelessly to design committees and agendas that not only reflect
@@ -62,7 +62,7 @@ const SecretaryGeneralLetter: React.FC = () => {
             <br />
             Abhishek Anand
             <br />
-            Secretary General, IIT BHU MUN 2025
+            Secretary General, IITBHU MUN 2025
           </p>
         </div>
       </div>

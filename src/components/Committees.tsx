@@ -78,38 +78,20 @@ const Committees = () => {
       // delegates: 40,
       level: "Beginner",
     },
-    // {
-    //   icon: Zap,
-    //   name: 'International Atomic Energy Agency',
-    //   acronym: 'IAEA',
-    //   agenda: 'Nuclear Non-Proliferation and Safety',
-    //   description: 'Promoting peaceful use of nuclear energy.',
-    //   delegates: 35,
-    //   level: 'Advanced'
-    // },
-    // {
-    //   icon: TreePine,
-    //   name: 'United Nations Environment Programme',
-    //   acronym: 'UNEP',
-    //   agenda: 'Combating Climate Change and Environmental Degradation',
-    //   description: 'Leading global environmental authority.',
-    //   delegates: 45,
-    //   level: 'Intermediate'
-    // }
   ];
 
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "Beginner":
-        return "bg-green-500/20 text-green-400 border-green-500/30";
-      case "Intermediate":
-        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-      case "Advanced":
-        return "bg-red-500/20 text-red-400 border-red-500/30";
-      default:
-        return "bg-purple-500/20 text-purple-400 border-purple-500/30";
-    }
-  };
+  // const getLevelColor = (level: string) => {
+  //   switch (level) {
+  //     case "Beginner":
+  //       return "bg-green-500/20 text-green-400 border-green-500/30";
+  //     case "Intermediate":
+  //       return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
+  //     case "Advanced":
+  //       return "bg-red-500/20 text-red-400 border-red-500/30";
+  //     default:
+  //       return "bg-purple-500/20 text-purple-400 border-purple-500/30";
+  //   }
+  // };
 
   return (
     <section
@@ -149,7 +131,7 @@ const Committees = () => {
                   <committee.icon className="text-white" size={24} />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
+                  {/* <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-bold text-white">
                       {committee.name}
                     </h3>
@@ -160,7 +142,7 @@ const Committees = () => {
                     >
                       {committee.level}
                     </span>
-                  </div>
+                  </div> */}
                   <p className="text-purple-400 font-medium mb-2">
                     {committee.acronym}
                   </p>

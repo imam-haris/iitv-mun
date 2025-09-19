@@ -109,12 +109,12 @@ const FAQ = () => {
             <div className="flex-col sm:flex-row gap-4 justify-center">
                 {/* <Mail className="text-purple-400" size={16} /> */}
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=Secretariat@iitbhumun.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=secretariat@iitbhumun.com"
                   target="_blank"
                   rel="noopener noreferrer"
                 className="inline-block bg-gradient-to-r from-indigo-500 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
                 >
-                  Secretariat@iitbhumun.com
+                  secretariat@iitbhumun.com
                 </a>
               {/* <a
                 href="tel:+919999999999"

@@ -5,12 +5,13 @@ import harisImg from "../assets/haris.jpg";
 import ashmitImg from "../assets/ashmit.jpg";
 import kamalImg from "../assets/kamal3.jpg";
 import raghavImg from "../assets/raghav.jpeg";
+import abhishekImg from "../assets/abhishek.jpg";
 const Secretariat = () => {
   const secretariatMembers = [
     {
       name: "Abhishek Anand",
       position: "Secretary General",
-      image: "image-url-here",
+      image: abhishekImg,
     },
     {
       name: "Kamal Banna",

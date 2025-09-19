@@ -15,6 +15,7 @@ import SecretaryGeneralLetter from "./components/SecretaryGeneralLetter";
 import Teams from "./components/Teams";
 import Sponsors from "./components/sponsors";
 import FAQ from "./components/FAQ";
+import Collaborators from "./components/Collaborators";
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isRegistered, setIsRegistered] = useState(false);
@@ -138,6 +139,7 @@ function App() {
             path="/sponsors"
             element={
               <div>
+                <Collaborators/>
                 <Sponsors />
               </div>
             }
