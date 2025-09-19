@@ -48,24 +48,24 @@ const Registration: React.FC<RegistrationProps> = ({
     {
       name: "Disarmament and International Security Committee (DISEC)",
       fee: 1500,
-      level: "Advanced",
+      // level: "Advanced",
     },
     {
       name: "United Nations Human Resources Committee (UNHRC)",
       fee: 1500,
-      level: "Beginner",
+      // level: "Beginner",
     },
     { name: "Joint Parliamentary Committee", fee: 1500, level: "Advanced" },
     {
       name: "United Nations Commission on the status of Women (CSW)",
       fee: 1500,
-      level: "Intermediate",
+      // level: "Intermediate",
     },
     { name: "All India Political Party Meet (AIPPM)", fee: 1500, level: "Advanced" },
     {
       name: "United Nations Environment Programme (UNEP)",
       fee: 1500,
-      level: "Beginner",
+      // level: "Beginner",
     },
   ];
 
@@ -393,16 +393,6 @@ const Registration: React.FC<RegistrationProps> = ({
                     </label>
                   </div>
                   <div className="flex items-center">
-                    {/* <input
-                      type="checkbox"
-                      name="delegation"
-                      checked={formData.delegation}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 text-indigo-600 bg-indigo-900/30 border-indigo-500/30 rounded focus:ring-indigo-500"
-                    /> */}
-                    {/* <label className="ml-2 text-indigo-300">
-                      I'm registering as part of a delegation (+₹3000)
-                    </label> */}
                   </div>
                 </div>
 
