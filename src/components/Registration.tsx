@@ -55,13 +55,13 @@ const Registration: React.FC<RegistrationProps> = ({
       fee: 1500,
       // level: "Beginner",
     },
-    { name: "Joint Parliamentary Committee", fee: 1500, level: "Advanced" },
+    { name: "Joint Parliamentary Committee", fee: 1500 },
     {
       name: "United Nations Commission on the status of Women (CSW)",
       fee: 1500,
       // level: "Intermediate",
     },
-    { name: "All India Political Party Meet (AIPPM)", fee: 1500, level: "Advanced" },
+    { name: "All India Political Party Meet (AIPPM)", fee: 1500},
     {
       name: "United Nations Environment Programme (UNEP)",
       fee: 1500,
@@ -326,7 +326,7 @@ const Registration: React.FC<RegistrationProps> = ({
                     <option value="">Select committee</option>
                     {committees.map((c, i) => (
                       <option key={i} value={c.name}>
-                        {c.name} ({c.level})
+                        {c.name}
                       </option>
                     ))}
                   </select>
@@ -347,7 +347,7 @@ const Registration: React.FC<RegistrationProps> = ({
                       .filter((c) => c.name !== formData.committee1)
                       .map((c, i) => (
                         <option key={i} value={c.name}>
-                          {c.name} ({c.level})
+                          {c.name}
                         </option>
                       ))}
                   </select>
@@ -372,7 +372,7 @@ const Registration: React.FC<RegistrationProps> = ({
                       )
                       .map((c, i) => (
                         <option key={i} value={c.name}>
-                          {c.name} ({c.level})
+                          {c.name}
                         </option>
                       ))}
                   </select>
