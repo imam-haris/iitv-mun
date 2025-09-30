@@ -150,43 +150,25 @@ const Committees = () => {
                     {committee.description}
                   </p>
                   <div className="space-y-2">
-                    <div className="bg-purple-900/30 rounded-lg p-3">
+                    {/* <div className="bg-purple-900/30 rounded-lg p-3">
                       <p className="text-white font-medium text-sm mb-1">
                         Agenda:
                       </p>
                       <p className="text-purple-200 text-sm">
                         {committee.agenda}
                       </p>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      {/* <span className="text-purple-300">
-                        Delegates: {committee.delegates}
-                      </span> */}
+                    </div> */}
+                    {/* <div className="flex items-center justify-between text-sm">
                       <span className="text-purple-300">
                         Level: {committee.level}
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* <div className="mt-16 text-center">
-          <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">Committee Registration</h3>
-            <p className="text-purple-200 mb-6">
-              Choose your preferred committee and secure your spot in IITBHU MUN 2025. Limited seats available!
-            </p>
-            <a
-              href="#register"
-              className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-            >
-              Register for Committees
-            </a>
-          </div>
-        </div> */}
       </div>
     </section>
   );
