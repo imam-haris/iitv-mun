@@ -48,7 +48,7 @@ const Committees = () => {
     {
       icon: Users,
       name: "United Nations Commission on the status of Women",
-      acronym: "CSW",
+      acronym: "UNCSW",
       agenda:
         "Promoting gender equality and the empowerment of women globally.",
       description:
@@ -80,18 +80,6 @@ const Committees = () => {
     },
   ];
 
-  // const getLevelColor = (level: string) => {
-  //   switch (level) {
-  //     case "Beginner":
-  //       return "bg-green-500/20 text-green-400 border-green-500/30";
-  //     case "Intermediate":
-  //       return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
-  //     case "Advanced":
-  //       return "bg-red-500/20 text-red-400 border-red-500/30";
-  //     default:
-  //       return "bg-purple-500/20 text-purple-400 border-purple-500/30";
-  //   }
-  // };
 
   return (
     <section
@@ -131,18 +119,6 @@ const Committees = () => {
                   <committee.icon className="text-white" size={24} />
                 </div>
                 <div className="flex-1">
-                  {/* <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold text-white">
-                      {committee.name}
-                    </h3>
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium border ${getLevelColor(
-                        committee.level
-                      )}`}
-                    >
-                      {committee.level}
-                    </span>
-                  </div> */}
                   <p className="text-purple-400 font-medium mb-2">
                     {committee.acronym}
                   </p>
@@ -150,19 +126,6 @@ const Committees = () => {
                     {committee.description}
                   </p>
                   <div className="space-y-2">
-                    {/* <div className="bg-purple-900/30 rounded-lg p-3">
-                      <p className="text-white font-medium text-sm mb-1">
-                        Agenda:
-                      </p>
-                      <p className="text-purple-200 text-sm">
-                        {committee.agenda}
-                      </p>
-                    </div> */}
-                    {/* <div className="flex items-center justify-between text-sm">
-                      <span className="text-purple-300">
-                        Level: {committee.level}
-                      </span>
-                    </div> */}
                   </div>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import anvitaImg from "../assets/anvita.jpg";
+import anvitaImg from "../assets/anvita2.jpg";
 import creativeImg from "../assets/creative.jpg";
 import harisImg from "../assets/haris.jpg";
 import ashmitImg from "../assets/ashmit.jpg";

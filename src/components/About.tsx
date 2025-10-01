@@ -3,7 +3,7 @@ import { Users, Globe, Award, Target } from 'lucide-react';
 
 const About = () => {
   const stats = [
-    { icon: Users, label: 'Delegates', value: '500+' },
+    { icon: Users, label: 'Delegates', value: '5000+' },
     { icon: Globe, label: 'Nationalities', value: '31' },
     { icon: Award, label: 'Committees', value: '6' },
     { icon: Target, label: 'Years', value: '10+' }
@@ -61,32 +61,6 @@ const About = () => {
             ))}
           </div>
         </div>
-
-        {/* <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-purple-500/20">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-white" size={24} />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">Networking</h4>
-              <p className="text-purple-200">Connect with like-minded individuals from across the country and build lasting professional relationships.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="text-white" size={24} />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">Global Perspective</h4>
-              <p className="text-purple-200">Gain insights into international affairs and develop a comprehensive understanding of global issues.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="text-white" size={24} />
-              </div>
-              <h4 className="text-xl font-bold text-white mb-2">Excellence</h4>
-              <p className="text-purple-200">Experience the highest standards of MUN procedures and witness exceptional quality in every aspect.</p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </section>
   );

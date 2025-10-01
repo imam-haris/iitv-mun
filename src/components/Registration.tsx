@@ -280,7 +280,7 @@ const Registration: React.FC<RegistrationProps> = ({
 
     },
     {
-      name: "United Nations Commission on the status of Women (CSW)",
+      name: "United Nations Commission on the status of Women (UNCSW)",
       fee: 1500,
       portfolios: [
   "Afghanistan",
