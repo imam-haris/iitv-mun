@@ -875,7 +875,7 @@ const Registration: React.FC<RegistrationProps> = ({
                 </div>
 
                 {/* Photo Upload */}
-                <div>
+                {/* <div>
                   <label className="block text-indigo-300 text-sm font-medium mb-2">
                     Upload Your Photo
                   </label>
@@ -885,7 +885,7 @@ const Registration: React.FC<RegistrationProps> = ({
                     onChange={handleFileChange}
                     className="w-full p-2 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors"
                   />
-                </div>
+                </div> */}
 
                 <button
                   type="submit"
