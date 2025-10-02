@@ -966,7 +966,7 @@ const Registration: React.FC<RegistrationProps> = ({
                 </ul>
               </div>
               {/*Announcement */}
-              <div className="fixed bottom-6 right-6 z-50">
+               <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-indigo-500/20">
                 <div className="bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white p-5 rounded-2xl shadow-2xl w-72 animate-pulse border border-purple-400">
                   <h2 className="text-lg font-bold text-center">✨ Research Session Orientation ✨</h2>
                   <p className="text-sm mt-2 text-center">
