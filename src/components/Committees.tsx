@@ -69,7 +69,7 @@ const Committees = () => {
       name: "United Nations Environment Programme",
       acronym: "UNEP",
       agenda:
-        "Addressing climate change and promoting sustainable environmental practices worldwide.",
+        "Deliberation upon Climate-Induced Displacement and Migration.",
       description:
         "The United Nations Environment Programme works to protect the environment, promote sustainability, and address global ecological challenges.",
       level: "Beginner",
