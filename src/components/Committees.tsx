@@ -6,8 +6,6 @@ import {
   Users,
   Building,
   Heart,
-  // Zap,
-  // TreePine,
 } from "lucide-react";
 
 const Committees = () => {
@@ -17,21 +15,21 @@ const Committees = () => {
       name: "Disarmament and International Security Committee",
       acronym: "DISEC",
       agenda:
-        "Prevention of an arms race in outer space and the promotion of its peaceful use for the benefit of all humankind.",
+        "Promotion of multilateralism in the area of disarmament and non-proliferation",
       description:
         "The Disarmament and International Security Committee (DISEC) works on disarmament, arms control, and maintaining international peace and security.",
-      // delegates: 15,
       level: "Advanced",
     },
     {
       icon: Globe,
-      name: "United Nations Human Resources Committee",
+      name: "United Nations Human Rights Council",
       acronym: "UNHRC",
-      agenda:
-        "Addressing staff welfare, mental health, and work-life balance within UN missions.",
+      agenda: [
+        "The humanitarian cost of Anti-Immigrant hate crime with special emphasis on Gun Violence.",
+        "Addressing the Global Mental Health Crisis as a humanitarian emergency with special emphasis on student suicides."
+      ],
       description:
-        "The Human Resources Committee focuses on managing UN personnel, staff welfare, recruitment, training, and promoting an inclusive and efficient workforce.",
-      // delegates: 193,
+        "The Human Rights Council addresses pressing humanitarian issues, ensuring the protection of rights and freedoms globally.",
       level: "Beginner",
     },
     {
@@ -42,18 +40,16 @@ const Committees = () => {
         "Investigating policies, bills, or matters that require oversight by multiple parliamentary committees.",
       description:
         "The Joint Parliamentary Committee is a special committee formed by both houses of Parliament to examine specific issues, bills, or policies in detail and ensure effective oversight.",
-      // delegates: 30,
       level: "Advanced",
     },
     {
       icon: Users,
-      name: "United Nations Commission on the status of Women",
+      name: "United Nations Commission on the Status of Women",
       acronym: "UNCSW",
       agenda:
         "Promoting gender equality and the empowerment of women globally.",
       description:
         "The Commission on the Status of Women works to promote gender equality, protect women’s rights, and empower women worldwide.",
-      // delegates: 47,
       level: "Intermediate",
     },
     {
@@ -61,10 +57,9 @@ const Committees = () => {
       name: "All India Political Party Meet",
       acronym: "AIPPM",
       agenda:
-        "Discussing national policy priorities and strategies for upcoming elections.",
+        "Deliberation on Inter-State River Water Conflicts with emphasis on resolutions",
       description:
         "The All India Political Party Meet is a gathering of political parties to discuss national policies, coordinate strategies, and address key issues affecting the country.",
-      // delegates: 54,
       level: "Advanced",
     },
     {
@@ -75,11 +70,9 @@ const Committees = () => {
         "Addressing climate change and promoting sustainable environmental practices worldwide.",
       description:
         "The United Nations Environment Programme works to protect the environment, promote sustainability, and address global ecological challenges.",
-      // delegates: 40,
       level: "Beginner",
     },
   ];
-
 
   return (
     <section
@@ -126,6 +119,18 @@ const Committees = () => {
                     {committee.description}
                   </p>
                   <div className="space-y-2">
+                    <p className="text-purple-400">AGENDA-</p>
+                    {Array.isArray(committee.agenda) ? (
+                      <ul className="list-decimal list-inside space-y-2 text-purple-300">
+                        {committee.agenda.map((point, i) => (
+                          <li key={i} className="text-purple-300">
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-purple-300">{committee.agenda}</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -134,7 +139,6 @@ const Committees = () => {
         </div>
       </div>
     </section>
-    
   );
 };
 
