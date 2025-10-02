@@ -37,7 +37,7 @@ const Committees = () => {
       name: "Joint Parliamentary Committee",
       acronym: "JPC",
       agenda:
-        "Investigating policies, bills, or matters that require oversight by multiple parliamentary committees.",
+        "Deliberation over the grant of statehood to the UT of Ladakh",
       description:
         "The Joint Parliamentary Committee is a special committee formed by both houses of Parliament to examine specific issues, bills, or policies in detail and ensure effective oversight.",
       level: "Advanced",
