@@ -46,8 +46,10 @@ const Committees = () => {
       icon: Users,
       name: "United Nations Commission on the Status of Women",
       acronym: "UNCSW",
-      agenda:
-        "Promoting gender equality and the empowerment of women globally.",
+      agenda: [
+        "Strengthening Women's Participation in Post-Conflict Reconstruction and Peacebuilding with a Gender-Responsive Approach",
+        "Protecting Women and Girls from Sexual Violence in Armed Conflicts across the MENA Region"
+      ],
       description:
         "The Commission on the Status of Women works to promote gender equality, protect women’s rights, and empower women worldwide.",
       level: "Intermediate",
