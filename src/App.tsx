@@ -122,7 +122,7 @@ function App() {
             element={
               <div>
                 <Secretariat />
-                <Teams/>
+                <Teams />
                 {/* <footer /> */}
               </div>
             }
@@ -135,16 +135,16 @@ function App() {
               </div>
             }
           />
-           <Route
+          <Route
             path="/sponsors"
             element={
               <div>
-                <Collaborators/>
+                <Collaborators />
                 <Sponsors />
               </div>
             }
           />
-           <Route
+          <Route
             path="/faq"
             element={
               <div>
@@ -174,7 +174,13 @@ function App() {
             </div>
           </div>
         )}
-
+        <div className="fixed bottom-6 left-0 w-full overflow-hidden z-50">
+          <div className="whitespace-nowrap animate-marquee">
+            <div className="inline-block bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white px-6 py-3 rounded-xl shadow-lg border border-purple-400 mx-4">
+              <span className="font-bold text-pink-400">FREE FREE FREE</span> – ✨ Research Session Orientation ✨ | Registeration is Live! 🚀 Limited Seats Available
+            </div>
+          </div>
+        </div>
         <Footer />
       </div>
     </Router>

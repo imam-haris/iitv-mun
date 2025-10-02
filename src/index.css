@@ -40,3 +40,12 @@ html {
 .animate-float-2 { animation: float2 7s ease-in-out infinite; }
 .animate-float-3 { animation: float3 8s ease-in-out infinite; }
 .animate-float-4 { animation: float4 9s ease-in-out infinite; }
+@keyframes marquee {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 13s linear infinite;
+}

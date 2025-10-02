@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import collegeImage from "../assets/college_img.png";
 import logo from "../assets/logo.png";
 
-const Hero = ({ onRegisterClick = () => {} }) => {
+const Hero = ({ onRegisterClick = () => { } }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -20,9 +20,7 @@ const Hero = ({ onRegisterClick = () => {} }) => {
       if (distance > 0) {
         setTimeLeft({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          ),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((distance % (1000 * 60)) / 1000),
         });
@@ -39,6 +37,8 @@ const Hero = ({ onRegisterClick = () => {} }) => {
       id="home"
       className="min-h-screen bg-[#1f073c] relative overflow-hidden"
     >
+
+      {/* Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={collegeImage}
@@ -48,25 +48,13 @@ const Hero = ({ onRegisterClick = () => {} }) => {
         />
         <div className="absolute inset-0 bg-[#1f073c] opacity-60" />
       </div>
-      <div className="absolute top-20 left-6 z-10 flex items-center space-x-4">
-        <img src={logo} alt="Logo" className="w-16 h-16 object-contain" />
-        <div className="border-l-2 border-purple-400 pl-4">
-          <h1 className="text-white font-bold text-xl sm:text-2xl">
-            IITBHU MUN
-          </h1>
-          <h2 className="text-white font-bold text-sm sm:text-base">
-            14TH EDITION
-          </h2>
-          <p className="text-purple-300 text-sm font-medium">
-            Rise. Speak. Resolve.
-          </p>
-        </div>
-      </div>
+
+      {/* Hero Content */}
       <div className="flex justify-center items-center min-h-screen relative z-10 px-4 text-center">
         <div className="max-w-3xl">
-<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight break-words">
-  IITBHU <br  /> MODEL UNITED NATIONS
-</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight break-words">
+            IITBHU <br /> MODEL UNITED NATIONS
+          </h1>
 
           <p className="text-xl md:text-2xl text-purple-300 font-medium mt-4">
             RISE. SPEAK. RESOLVE.
@@ -120,6 +108,7 @@ const Hero = ({ onRegisterClick = () => {} }) => {
         </div>
       </div>
 
+      {/* Scroll down arrow */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <ChevronDown className="text-white/60" size={32} />
       </div>

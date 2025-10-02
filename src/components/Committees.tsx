@@ -134,6 +134,7 @@ const Committees = () => {
         </div>
       </div>
     </section>
+    
   );
 };
 
