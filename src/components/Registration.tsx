@@ -418,10 +418,10 @@ const Registration: React.FC<RegistrationProps> = ({
                 <label className="ml-2 text-indigo-300">
                       *Breakfast and dinner for only accomodated people
                     </label>
-                <label className="ml-2 text-indigo-300">
+                {/* <label className="ml-2 text-indigo-300">
                       *Fee for IIT(BHU) - ₹699
                       *Fee for BHU - ₹1199
-                    </label>
+                    </label> */}
               </form>
             </div>
 
@@ -505,6 +505,10 @@ const Registration: React.FC<RegistrationProps> = ({
                     Chance to win awards and recognition
                   </li>
                 </ul>
+                <label className="ml-2 text-indigo-300">
+                      *Fee for IIT(BHU) - ₹699
+                      *Fee for BHU - ₹1199
+                    </label>
               </div>
             </div>
           </div>
