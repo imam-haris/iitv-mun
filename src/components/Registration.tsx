@@ -47,24 +47,24 @@ const Registration: React.FC<RegistrationProps> = ({
   const committees = [
     {
       name: "Disarmament and International Security Committee (DISEC)",
-      fee: 1500,
+      fee: 1799,
       // level: "Advanced",
     },
     {
       name: "United Nations Human Resources Committee (UNHRC)",
-      fee: 1500,
+      fee: 1799,
       // level: "Beginner",
     },
-    { name: "Joint Parliamentary Committee (JPC)", fee: 1500 },
+    { name: "Joint Parliamentary Committee (JPC)", fee: 1799 },
     {
       name: "United Nations Commission on the status of Women (CSW)",
-      fee: 1500,
+      fee: 1799,
       // level: "Intermediate",
     },
-    { name: "All India Political Party Meet (AIPPM)", fee: 1500},
+    { name: "All India Political Party Meet (AIPPM)", fee: 1799},
     {
       name: "United Nations Environment Programme (UNEP)",
-      fee: 1500,
+      fee: 1799,
       // level: "Beginner",
     },
   ];
@@ -418,6 +418,10 @@ const Registration: React.FC<RegistrationProps> = ({
                 <label className="ml-2 text-indigo-300">
                       *Breakfast for only accomodated people
                     </label>
+                <label className="ml-2 text-indigo-300">
+                      *Fee for IIT(BHU) - ₹699
+                      *Fee for BHU - ₹1199
+                    </label>
               </form>
             </div>
 
@@ -427,7 +431,7 @@ const Registration: React.FC<RegistrationProps> = ({
               <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-indigo-500/20">
                 <h3 className="text-xl font-bold text-white mb-4 flex items-center">
                   <CreditCard className="mr-3" size={20} />
-                  Fee Structure
+                  Fee Structure*
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between text-indigo-200">
