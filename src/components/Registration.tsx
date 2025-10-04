@@ -176,8 +176,8 @@ const Registration: React.FC<RegistrationProps> = ({
 
   const getTotalFee = () => {
     let total = getCommitteeFee();
-    if (formData.accommodation) total += 500;
-    if (formData.delegation) total += 2000;
+    // if (formData.accommodation) total += 500;
+    // if (formData.delegation) total += 2000;
     return total;
   };
 
@@ -389,7 +389,7 @@ const Registration: React.FC<RegistrationProps> = ({
                       className="w-4 h-4 text-indigo-600 bg-indigo-900/30 border-indigo-500/30 rounded focus:ring-indigo-500"
                     />
                     <label className="ml-2 text-indigo-300">
-                      I need accommodation (+₹500)
+                      I want to join session (FREE)
                     </label>
                   </div>
                   <div className="flex items-center">
