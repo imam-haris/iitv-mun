@@ -982,10 +982,6 @@ const Registration: React.FC<RegistrationProps> = ({
                     Chance to win awards and recognition
                   </li>
                 </ul>
-                <label className="ml-2 text-indigo-300">
-                  *Fee for IIT(BHU) - ₹699
-                </label>
-                <label className="ml-2 text-indigo-300">BHU - ₹1199</label>
               </div>
             </div>
           </div>
