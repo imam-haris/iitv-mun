@@ -16,11 +16,8 @@ interface FormDataType {
   city: string;
   experience: string;
   committee1: string;
-  portfolio1: string[];
   committee2: string;
-  portfolio2: string[];
   committee3: string;
-  portfolio3: string[];
   accommodation: boolean;
   delegation: boolean;
   photo: File | null;
@@ -38,454 +35,37 @@ const Registration: React.FC<RegistrationProps> = ({
     city: "",
     experience: "",
     committee1: "",
-    portfolio1: [],
     committee2: "",
-    portfolio2: [],
     committee3: "",
-    portfolio3: [],
     accommodation: false,
     delegation: false,
     photo: null,
   });
 
+  // const [loading, setLoading] = useState(false);
+
   const committees = [
     {
       name: "Disarmament and International Security Committee (DISEC)",
       fee: 1500,
-      portfolios: [
-        // AFRICA (19 countries)
-        "Nigeria",
-        "South Africa",
-        "Egypt",
-        "Kenya",
-        "Morocco",
-        "Ethiopia",
-        "Ghana",
-        "Algeria",
-        "Tanzania",
-        "Uganda",
-        "Zimbabwe",
-        "Tunisia",
-        "Senegal",
-        "Ivory Coast",
-        "Cameroon",
-        "Democratic Republic of Congo",
-        "Angola",
-        "Rwanda",
-        "Botswana",
-
-        // ASIA (17 countries)
-        "China",
-        "India",
-        "Japan",
-        "Pakistan",
-        "Indonesia",
-        "South Korea",
-        "Turkey",
-        "Iran",
-        "Saudi Arabia",
-        "Israel",
-        "Thailand",
-        "Vietnam",
-        "Philippines",
-        "Malaysia",
-        "Bangladesh",
-        "Singapore",
-        "Afghanistan",
-
-        // EUROPE (12 countries)
-        "United Kingdom",
-        "France",
-        "Russia",
-        "Germany",
-        "Italy",
-        "Spain",
-        "Poland",
-        "Netherlands",
-        "Sweden",
-        "Switzerland",
-        "Ukraine",
-        "Czech Republic",
-
-        // NORTH AMERICA (8 countries)
-        "United States",
-        "Canada",
-        "Mexico",
-        "Cuba",
-        "Jamaica",
-        "Costa Rica",
-        "Panama",
-        "Haiti",
-
-        // SOUTH AMERICA (9 countries)
-        "Brazil",
-        "Argentina",
-        "Chile",
-        "Colombia",
-        "Peru",
-        "Venezuela",
-        "Ecuador",
-        "Uruguay",
-        "Bolivia",
-
-        // OCEANIA (5 countries)
-        "Australia",
-        "New Zealand",
-        "Papua New Guinea",
-        "Fiji",
-        "Solomon Islands"
-      ]
-
+      // level: "Advanced",
     },
     {
       name: "United Nations Human Resources Committee (UNHRC)",
       fee: 1500,
-      portfolios: [
-        "Afghanistan",
-        "Australia",
-        "Bangladesh",
-        "Brazil",
-        "Bhutan",
-        "Belgium",
-        "Chile",
-        "Canada",
-        "Costa Rica",
-        "Colombia",
-        "China",
-        "Central African Republic",
-        "Democratic Republic of Congo",
-        "Denmark",
-        "El Salvador",
-        "Egypt",
-        "France",
-        "Finland",
-        "Germany",
-        "Ghana",
-        "Georgia",
-        "India",
-        "Iraq",
-        "Iran",
-        "Indonesia",
-        "Italy",
-        "Israel",
-        "Iceland",
-        "Jordan",
-        "Japan",
-        "Kenya",
-        "Mexico",
-        "Nepal",
-        "Netherlands",
-        "New Zealand",
-        "North Korea",
-        "Pakistan",
-        "Phillipines",
-        "Palestine",
-        "Qatar",
-        "Russia",
-        "South Korea",
-        "South Africa",
-        "Turkey",
-        "Ukraine",
-        "United Arab Emirates",
-        "United Kingdom",
-        "United States",
-        "Zimbabwe"
-      ],
-
+      // level: "Beginner",
     },
+    { name: "Joint Parliamentary Committee (JPC)", fee: 1500 },
     {
-      name: "Joint Parliamentary Committee (JPC)",
+      name: "United Nations Commission on the status of Women (CSW)",
       fee: 1500,
-      portfolios: [
-        "Narendra Modi - Varanasi - BJP",
-        "Amit Shah - Gandhinagar - BJP",
-        "Rajnath Singh - Lucknow - BJP",
-        "Nitin Gadkari - Nagpur - BJP",
-        "Smriti Irani - Amethi - BJP",
-        "Piyush Goyal - Nellore - BJP",
-        "Pralhad Joshi - Dharwad - BJP",
-        "Om Birla - Kota - BJP",
-        "Dharmendra Pradhan - Rajya Sabha Nominee - BJP",
-        "Rajnath Singh - Lucknow - BJP",
-        "Jyotiraditya Scindia - Guna - BJP",
-        "Ramesh Pokhriyal - Haridwar - BJP",
-        "Kiren Rijiju - Arunachal West - BJP",
-        "Tapir Gao - Arunachal East - BJP",
-        "Sarbananda Sonowal - Dibrugarh - BJP",
-        "Gajendra Singh Shekhawat - Jodhpur - BJP",
-        "Bhupender Yadav - Alwar - BJP",
-        "Tejasvi Surya - Bangalore South - BJP",
-        "Shobha Karandlaje - Bangalore North - BJP",
-        "H. D. Kumaraswamy - Mandya - BJP",
-        "Basavaraj Bommai - Haveri - BJP",
-        "Shivraj Singh Chouhan - Vidisha - BJP",
-        "Shankar Lalwani - Indore - BJP",
-        "Om Birla - Kota - BJP",
-        "Ganesh Singh - Satna - BJP",
-        "V. D. Sharma - Khajuraho - BJP",
-        "Janardan Mishra - Rewa - BJP",
-        "Rajkumar Roat - Banswara - BJP",
-        "Ramesh Jigajinagi - Bijapur - BJP",
-        "Dilip Saikia - Darrang-Udalguri - BJP",
-        "Joyanta Basumatary - Kokrajhar - BJP",
-        "Kamakhya Prasad Tasa - Kaziranga - BJP",
-        "Bijendra Singh - Jaipur Rural - BJP",
-        "Anurag Thakur - Hamirpur - BJP",
-        "Rajeev Chandrasekhar - Bangalore Rural - BJP",
-        "Parvesh Verma - West Delhi - BJP",
-        "Manoj Tiwari - North East Delhi - BJP",
-        "Shiv Sena MP - Mumbai North - Shiv Sena (NDA)",
-        "BJP MP - Nagpur - BJP",
-        "BJP MP - Gujarat - BJP",
-        "Rahul Gandhi - Wayanad - INC",
-        "Priyanka Gandhi - Raebareli - INC",
-        "Sonia Gandhi - Gandhinagar - INC",
-        "Abhishek Banerjee - Diamond Harbour - AITC",
-        "Mahua Moitra - Krishnanagar - AITC",
-        "T. R. Baalu - Sriperumbudur - DMK",
-        "Dayanidhi Maran - Chennai Central - DMK",
-        "Dr. Kalanidhi Veeraswamy - Chennai North - DMK",
-        "D. M. Kathir Anand - Vellore - DMK",
-        "G. Selvam - Kancheepuram (SC) - DMK",
-        "Jayant Chaudhary - Rae Bareli - RLD",
-        "Akhilesh Yadav - Mainpuri - SP",
-        "Shivpal Singh Yadav - Firozabad - SP",
-        "Priyanka Yadav - Badaun - SP",
-        "Mallikarjun Kharge - Gulbarga - INC",
-        "Randeep Surjewala - Patiala - INC",
-        "Sushmita Dev - Silchar - INC",
-        "Kanimozhi Karunanidhi - Thanjavur - DMK",
-        "M. K. Stalin MP - Chennai South - DMK",
-        "B. Senguttuvan - Tiruchirappalli - DMK",
-        "Mamata Banerjee - South Kolkata - AITC",
-        "Saugata Roy - Kolkata North - AITC",
-        "Sudip Bandyopadhyay - Kolkata Dakshin - AITC",
-        "Abdul Khaleque - Barpeta - INC",
-        "Ruhal Ahmed - Guwahati - INC",
-        "R. K. Chaudhary - Mohanlalganj - SP",
-        "Pradeep Kumar Singh - Saharsa - INC",
-        "Ajay Kumar Lallu - Azamgarh - INC",
-        "Ranjan Singh - Gaya - INC",
-        "Dinesh Gundu Rao - Bangalore North - INC",
-        "Chandrashekhar Azad - Nagina - Independent",
-        "Asaduddin Owaisi - Hyderabad - AIMIM",
-        "Hanuman Beniwal - Nagaur - RLP",
-        "Richard Vanlalhmangaiha - Mizoram - Independent",
-        "Pappu Yadav - Bhagalpur - Independent",
-        "Gurmeet Singh Hayer - Fatehgarh Sahib - Independent",
-        "Dushyant Singh Jhalawar - Baran - Independent",
-        "Rahul Kaswan - Churu - Independent",
-        "Arjun Ram Meghwal - Bikaner(SC) - BJP"
-      ],
-
+      // level: "Intermediate",
     },
-    {
-      name: "United Nations Commission on the status of Women (UNCSW)",
-      fee: 1500,
-      portfolios: [
-        "Afghanistan",
-        "Argentina",
-        "Australia",
-        "Bangladesh",
-        "Brazil",
-        "Canada",
-        "Chile",
-        "China",
-        "Colombia",
-        "Cuba",
-        "Czech Republic",
-        "Domocratic Republic of Congo",
-        "Egypt",
-        "Ethiopia",
-        "France",
-        "Germany",
-        "Ghana",
-        "Haiti",
-        "India",
-        "Indonesia",
-        "Iran",
-        "Italy",
-        "Jamaica",
-        "Japan",
-        "Kenya",
-        "Lebanon",
-        "Mexico",
-        "Morocco",
-        "Myanmar",
-        "Nepal",
-        "Nigeria",
-        "Norway",
-        "Pakistan",
-        "Peru",
-        "Phillipines",
-        "Poland",
-        "Qatar",
-        "Romania",
-        "Russia",
-        "Rwanda",
-        "Saudi Arabia",
-        "Senegal",
-        "Serbia",
-        "South Africa",
-        "South Korea",
-        "Spain",
-        "Srilanka",
-        "Sudan",
-        "Sweden",
-        "Switzerland",
-        "Syria",
-        "Thailand",
-        "Tunisia",
-        "Turkey",
-        "Uganda",
-        "Ukaraine",
-        "United Kingdom",
-        "United States",
-        "Venezuela",
-        "Yemen",
-        "African Union",
-        "European Union",
-        "Association of Southeast Asian Nations (ASEAN)",
-        "South Asian Association for Regional Cooperation (SAARC)",
-        "BRICS",
-        "League of Arab States (LAS)",
-        "Human Rights Watch (HRW)",
-        "Amnesty International",
-        "Women’s International League for Peace and Freedom (WILPF)",
-        "Women for Women International",
-        "Global Network of Women Peacebuilders (GNWP)",
-        "CARE International",
-        "Nordic Council",
-        "Organisation of Islamic Cooperation (OIC)",
-        "League of Arab States (LAS)"
-      ]
-
-    },
-    {
-      name: "All India Political Party Meet (AIPPM)",
-      fee: 1500,
-      portfolios: [
-        "Narendra Modi - Bharatiya Janata Party",
-        "Amit Shah - Bharatiya Janata Party",
-        "Dharmendra Pradhan - Bharatiya Janata Party",
-        "Ashwini Vaishnaw - Bharatiya Janata Party",
-        "Bhupinder Patel - Bharatiya Janata Party",
-        "Hardeep Singh Puri - Bharatiya Janata Party",
-        "Kiren Rijiju - Bharatiya Janata Party",
-        "Manoharlal Khattar - Bharatiya Janata Party",
-        "Manoj Tiwari - Bharatiya Janata Party",
-        "Anurag Singh Thakur - Bharatiya Janata Party",
-        "Nirmala Sitharaman - Bharatiya Janata Party",
-        "Nitin Gadkari - Bharatiya Janata Party",
-        "Piyush Goyal - Bharatiya Janata Party",
-        "Rajnath Singh - Bharatiya Janata Party",
-        "Shivraj Singh Chouhan - Bharatiya Janata Party",
-        "Smriti Irani - Bharatiya Janata Party",
-        "Subramanyam Jaishankar - Bharatiya Janata Party",
-        "Sudhanshu Trivedi - Bharatiya Janata Party",
-        "Tejaswi Surya - Bharatiya Janata Party",
-        "Vasundhara Raje - Bharatiya Janata Party",
-        "Yogi Adityanath - Bharatiya Janata Party",
-        "Maneka Gandhi - Bharatiya Janata Party",
-        "Meenakshi Lekhi - Bharatiya Janata Party",
-        "G Kishan Reddy - Bharatiya Janata Party",
-        "Jyotiraditya Scindia - Bharatiya Janata Party",
-        "Dr Mansukh Mandaviya - Bharatiya Janata Party",
-        "Himanta Biswa Sarma - Bharatiya Janata Party",
-        "Hardik Patel - Bharatiya Janata Party",
-        "Pema Khandu - Bharatiya Janata Party",
-        "J.P. Nadda - Bharatiya Janata Party",
-        "Prahlad Joshi - Bharatiya Janata Party",
-        "Diya Kumari - Bharatiya Janata Party",
-        "Annamalai - Bharatiya Janata Party",
-        "Arjun Ram Meghwal - Bharatiya Janata Party",
-        "Devendra Fadnavis - Bharatiya Janata Party",
-        "Navneet Kaur Rana - Bharatiya Janata Party",
-        "Rahul Gandhi - Indian National Congress",
-        "Sonia Gandhi - Indian National Congress",
-        "Priyanka Gandhi Vadra - Indian National Congress",
-        "Sachin Pilot - Indian National Congress",
-        "Dr. Shashi Tharoor - Indian National Congress",
-        "Dr. Manmohan Singh - Indian National Congress",
-        "Ashok Gehlot - Indian National Congress",
-        "Adhir Ranjan Chowdhury - Indian National Congress",
-        "Bhupesh Baghel - Indian National Congress",
-        "Mallikarjun Kharge - Indian National Congress",
-        "Dr. Abhishek Manu - Indian National Congress",
-        "Bhupinder Singh Hooda - Indian National Congress",
-        "Imran Pratapgarhi - Indian National Congress",
-        "Jairam Ramesh - Indian National Congress",
-        "Ajay Maken - Indian National Congress",
-        "Kanhaiya Kumar - Indian National Congress",
-        "Shanti Dhariwal - Indian National Congress",
-        "Siddaramaiah - Indian National Congress",
-        "Arvind Kejriwal - Aam Admi Party",
-        "Sanjay Singh - Aam Admi Party",
-        "Raghav Chadha - Aam Admi Party",
-        "Bhagwant Mann - Aam Admi Party",
-        "Atishi Marlena - Aam Admi Party",
-        "Manish Sisodia - Aam Admi Party",
-        "Lalu Prasad Yadav - Rashtriya Janta Dal",
-        "Manoj Jha - Rashtriya Janta Dal",
-        "Rabri Devi - Rashtriya Janta Dal",
-        "Tejashwi Yadav - Rashtriya Janta Dal",
-        "Akhilesh Yadav - Samajwadi Party",
-        "Ram Gopal Yadav - Samajwadi Party",
-        "S.T. Hasan - Samajwadi Party",
-        "Nitish Kumar - Janta Dal",
-        "S. Ambreesh - Janta Dal",
-        "Ajit Pawar - Nationalist Congress Party",
-        "Praful Patel - Nationalist Congress Party",
-        "Sharad Pawar - Nationalist Congress Party",
-        "Supriya Sule - Nationalist Congress Party",
-        "Kunwar Danish Ali - Bahujan Samaj Party",
-        "Kumari Mayawati - Bahujan Samaj Party",
-        "Sanjay Raut - Shiv Sena(UBT)",
-        "Uddhav Thackeray - Shiv Sena(UBT)",
-        "Eknath Shinde - Shiv Sena",
-        "Mamta Banerjee - All India Trinamool Congress",
-        "Abhishek Banerjee - All India Trinamool Congress",
-        "Derek O'Brien - All India Trinamool Congress",
-        "Mahua Moitra - All India Trinamool Congress",
-        "Asaduddin Owaisi - All India Majlis-e-Ittehad-ul-Muslimeen",
-        "Imtiaz Jaleel - All India Majlis-e-Ittehad-ul-Muslimeen",
-        "Akhtarul Iman - All India Majlis-e-Ittehad-ul-Muslimeen",
-        "Omar Abdullah - Jammu and Kashmir National Congress",
-        "Farooq Abdullah - Jammu and Kashmir National Congress",
-        "Mehbooba Mufti - Jammu and Kashmir People's Democratic Party",
-        "Pinarayi Vijayan - Communist Party of India (Marxist)",
-        "D. Raja - Communist Party of India",
-        "Yogendra Yadav - Swaraj India Party",
-        "Raj Thackeray - Maharashtra Navnirman Sena",
-        "M. K. Stalin - Dravida Munnetra Kazhagam",
-        "K. Karunanidhi - Dravida Munnetra Kazhagam",
-        "Sukhbir Singh Badal - Shiromani Akali Dal",
-        "Harsimrat Kaur Badal - Shiromani Akali Dal",
-        "Nara Chandrababu Naidu - Telugu Desam Party",
-        "Chirag Paswan - Lok Janshakti Party(Ram Vilas)",
-        "Naveen Patnaik - Biju Janata Dal",
-        "Prem Singh Tamang - Sikkim Krantikari Morcha",
-        "Hemant Soren - Jharkhand Mukti Morcha",
-        "Conrad Sangma - National People's Party",
-        "Neiphiu Rio - Nationalist Democratic Progressive Party",
-        "Pawan Kalyan - Janasena Party",
-        "Jagan Mohan Reddy - YSR Congress Party",
-        "Prashant Kishore - Jan Suraj",
-        "HD Deve Gowda - Janata Dal (Secular)",
-        "Naba Kumar Sarania - Independent",
-        "Ranjan Gogoi - Independent",
-        "Umesh Kumar - Independent",
-        "Kapil Sibal - Independent",
-        "Chandrashekhar Azad Ravan - Independent",
-        "Mohammad Haneefa - Independent",
-        "Sheikh Abdul Rashid - Independent"
-      ],
-
-    },
+    { name: "All India Political Party Meet (AIPPM)", fee: 1500},
     {
       name: "United Nations Environment Programme (UNEP)",
       fee: 1500,
-      portfolios: ["DEMO", "DEMO", "DEMO", "DEMO", "DEMO"],
+      // level: "Beginner",
     },
   ];
 
@@ -497,33 +77,15 @@ const Registration: React.FC<RegistrationProps> = ({
     let fieldValue: string | boolean = value;
 
     if (type === "checkbox") {
-      fieldValue = (e.target as HTMLInputElement).checked;
+      fieldValue = (e.target as HTMLInputElement).checked; // cast to HTMLInputElement
     }
 
     setFormData((prev) => ({
       ...prev,
       [name]: fieldValue,
-      ...(name === "committee1" ? { committee2: "", committee3: "", portfolio1: [] } : {}),
-      ...(name === "committee2" ? { committee3: "", portfolio2: [] } : {}),
+      ...(name === "committee1" ? { committee2: "", committee3: "" } : {}),
+      ...(name === "committee2" ? { committee3: "" } : {}),
     }));
-  };
-
-  const handlePortfolioChange = (committeeKey: "portfolio1" | "portfolio2" | "portfolio3", value: string) => {
-    setFormData((prev) => {
-      const selected = prev[committeeKey];
-      let updated: string[];
-      if (selected.includes(value)) {
-        updated = selected.filter((p) => p !== value);
-      } else {
-        if (selected.length < 5) {
-          updated = [...selected, value];
-        } else {
-          updated = selected;
-          alert("You can select up to 5 portfolios only.");
-        }
-      }
-      return { ...prev, [committeeKey]: updated };
-    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -534,12 +96,14 @@ const Registration: React.FC<RegistrationProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // setLoading(true);
 
     try {
       let photoURL = "";
 
       if (formData.photo) {
         const fileName = `${Date.now()}-${formData.photo.name}`;
+
         const filePath = `registrations/${Date.now()}-${formData.photo.name}`;
 
         const { error: uploadError } = await supabase.storage
@@ -567,11 +131,8 @@ const Registration: React.FC<RegistrationProps> = ({
             city: formData.city,
             experience: formData.experience,
             committee1: formData.committee1,
-            portfolio1: formData.portfolio1,
             committee2: formData.committee2,
-            portfolio2: formData.portfolio2,
             committee3: formData.committee3,
-            portfolio3: formData.portfolio3,
             accommodation: formData.accommodation,
             delegation: formData.delegation,
             photo: photoURL,
@@ -590,21 +151,21 @@ const Registration: React.FC<RegistrationProps> = ({
         city: "",
         experience: "",
         committee1: "",
-        portfolio1: [],
         committee2: "",
-        portfolio2: [],
         committee3: "",
-        portfolio3: [],
         accommodation: false,
         delegation: false,
         photo: null,
       });
 
       onRegisterSuccess();
+
       closeRegistration();
     } catch (error) {
       console.error("Registration error:", error);
       alert("Something went wrong. Please try again later.");
+    } finally {
+      // setLoading(false);
     }
   };
 
@@ -618,39 +179,6 @@ const Registration: React.FC<RegistrationProps> = ({
     if (formData.accommodation) total += 500;
     if (formData.delegation) total += 2000;
     return total;
-  };
-
-  const renderPortfolioDropdown = (
-    committeeName: string,
-    portfolioKey: "portfolio1" | "portfolio2" | "portfolio3"
-  ) => {
-    const committee = committees.find((c) => c.name === committeeName);
-    if (!committee) return null;
-
-    return (
-      <div className="mt-4">
-        <label className="block text-indigo-300 text-sm font-medium mb-2">
-          Select Portfolios (up to 5)
-        </label>
-        {/* Scrollable container */}
-        <div className="max-h-48 overflow-y-auto border border-indigo-500/30 rounded-lg p-2">
-          <div className="grid grid-cols-2 gap-2">
-            {committee.portfolios.map((p, i) => (
-              <label key={i} className="flex items-center text-white">
-                <input
-                  type="checkbox"
-                  value={p}
-                  checked={formData[portfolioKey].includes(p)}
-                  onChange={() => handlePortfolioChange(portfolioKey, p)}
-                  className="mr-2"
-                />
-                {p}
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
   };
 
   return (
@@ -681,7 +209,6 @@ const Registration: React.FC<RegistrationProps> = ({
                 Registration Form
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* existing inputs ... */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -784,9 +311,7 @@ const Registration: React.FC<RegistrationProps> = ({
                   </div>
                 </div>
 
-
-
-                {/* Committee Preferences + Portfolio */}
+                {/* Committee Preferences */}
                 <div>
                   <label className="block text-indigo-300 text-sm font-medium mb-2">
                     1st Preference Committee
@@ -796,7 +321,7 @@ const Registration: React.FC<RegistrationProps> = ({
                     value={formData.committee1}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white"
+                    className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors"
                   >
                     <option value="">Select committee</option>
                     {committees.map((c, i) => (
@@ -805,7 +330,6 @@ const Registration: React.FC<RegistrationProps> = ({
                       </option>
                     ))}
                   </select>
-                  {renderPortfolioDropdown(formData.committee1, "portfolio1")}
                 </div>
                 <div>
                   <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -816,7 +340,7 @@ const Registration: React.FC<RegistrationProps> = ({
                     value={formData.committee2}
                     onChange={handleInputChange}
                     disabled={!formData.committee1}
-                    className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white"
+                    className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors"
                   >
                     <option value="">Select committee</option>
                     {committees
@@ -827,7 +351,6 @@ const Registration: React.FC<RegistrationProps> = ({
                         </option>
                       ))}
                   </select>
-                  {renderPortfolioDropdown(formData.committee2, "portfolio2")}
                 </div>
                 <div>
                   <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -838,7 +361,7 @@ const Registration: React.FC<RegistrationProps> = ({
                     value={formData.committee3}
                     onChange={handleInputChange}
                     disabled={!formData.committee2}
-                    className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white"
+                    className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors"
                   >
                     <option value="">Select committee</option>
                     {committees
@@ -853,7 +376,6 @@ const Registration: React.FC<RegistrationProps> = ({
                         </option>
                       ))}
                   </select>
-                  {renderPortfolioDropdown(formData.committee3, "portfolio3")}
                 </div>
 
                 {/* Accommodation & Delegation */}
@@ -875,7 +397,7 @@ const Registration: React.FC<RegistrationProps> = ({
                 </div>
 
                 {/* Photo Upload */}
-                {/* <div>
+                <div>
                   <label className="block text-indigo-300 text-sm font-medium mb-2">
                     Upload Your Photo
                   </label>
@@ -885,7 +407,7 @@ const Registration: React.FC<RegistrationProps> = ({
                     onChange={handleFileChange}
                     className="w-full p-2 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white focus:outline-none focus:border-indigo-400 transition-colors"
                   />
-                </div> */}
+                </div>
 
                 <button
                   type="submit"
@@ -894,10 +416,11 @@ const Registration: React.FC<RegistrationProps> = ({
                   Register Now
                 </button>
                 <label className="ml-2 text-indigo-300">
-                  *Breakfast and dinner only for accomodated people
-                </label>
+                      *Breakfast for only accomodated people
+                    </label>
               </form>
             </div>
+
             {/* Right panel */}
             <div className="space-y-6">
               {/* Fee Structure */}
@@ -917,6 +440,12 @@ const Registration: React.FC<RegistrationProps> = ({
                       <span>₹500</span>
                     </div>
                   )}
+                  {/* {formData.delegation && (
+                    <div className="flex justify-between text-indigo-200">
+                      <span>Delegation Fee:</span>
+                      <span>₹3000</span>
+                    </div>
+                  )} */}
                   <div className="border-t border-indigo-500/30 pt-3">
                     <div className="flex justify-between text-white font-bold text-lg">
                       <span>Total Amount:</span>
@@ -933,6 +462,14 @@ const Registration: React.FC<RegistrationProps> = ({
                   Important Dates
                 </h3>
                 <div className="space-y-3 text-indigo-200">
+                  {/* <div className="flex justify-between">
+                    <span>Early Bird Deadline:</span>
+                    <span>Jan 15, 2025</span>
+                  </div> */}
+                  {/* <div className="flex justify-between">
+                    <span>Regular Registration:</span>
+                    <span>Feb 10, 2025</span>
+                  </div> */}
                   <div className="flex justify-between">
                     <span>Conference Dates:</span>
                     <span>Oct 31– Nov 2, 2025</span>
@@ -965,23 +502,11 @@ const Registration: React.FC<RegistrationProps> = ({
                   </li>
                 </ul>
               </div>
-              {/*Announcement */}
-{/* <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-indigo-500/20 flex justify-center items-center">
-  <div className="bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white p-5 rounded-2xl shadow-2xl w-72 animate-pulse border border-purple-400">
-    <h2 className="text-lg font-bold text-center">✨ Research Session Orientation ✨</h2>
-    <p className="text-sm mt-2 text-center">
-      <span className="font-bold text-pink-400">FREE FREE FREE</span> <br />
-      Registration is Live! – Limited Seats Available!
-    </p>
-  </div>
-</div> */}
-
             </div>
           </div>
         </div>
       </div>
     </section>
-
   );
 };
 
