@@ -23,7 +23,6 @@ interface FormDataType {
   portfolio3: string[];
   accommodation: boolean;
   delegation: boolean;
-  photo: File | null;
 }
 
 const Registration: React.FC<RegistrationProps> = ({
@@ -45,7 +44,6 @@ const Registration: React.FC<RegistrationProps> = ({
     portfolio3: [],
     accommodation: false,
     delegation: false,
-    photo: null,
   });
 
   const committees = [
@@ -133,9 +131,8 @@ const Registration: React.FC<RegistrationProps> = ({
         "New Zealand",
         "Papua New Guinea",
         "Fiji",
-        "Solomon Islands"
-      ]
-
+        "Solomon Islands",
+      ],
     },
     {
       name: "United Nations Human Resources Committee (UNHRC)",
@@ -189,9 +186,8 @@ const Registration: React.FC<RegistrationProps> = ({
         "United Arab Emirates",
         "United Kingdom",
         "United States",
-        "Zimbabwe"
+        "Zimbabwe",
       ],
-
     },
     {
       name: "Joint Parliamentary Committee (JPC)",
@@ -275,9 +271,8 @@ const Registration: React.FC<RegistrationProps> = ({
         "Gurmeet Singh Hayer - Fatehgarh Sahib - Independent",
         "Dushyant Singh Jhalawar - Baran - Independent",
         "Rahul Kaswan - Churu - Independent",
-        "Arjun Ram Meghwal - Bikaner(SC) - BJP"
+        "Arjun Ram Meghwal - Bikaner(SC) - BJP",
       ],
-
     },
     {
       name: "United Nations Commission on the status of Women (UNCSW)",
@@ -357,9 +352,8 @@ const Registration: React.FC<RegistrationProps> = ({
         "CARE International",
         "Nordic Council",
         "Organisation of Islamic Cooperation (OIC)",
-        "League of Arab States (LAS)"
-      ]
-
+        "League of Arab States (LAS)",
+      ],
     },
     {
       name: "All India Political Party Meet (AIPPM)",
@@ -478,9 +472,8 @@ const Registration: React.FC<RegistrationProps> = ({
         "Kapil Sibal - Independent",
         "Chandrashekhar Azad Ravan - Independent",
         "Mohammad Haneefa - Independent",
-        "Sheikh Abdul Rashid - Independent"
+        "Sheikh Abdul Rashid - Independent",
       ],
-
     },
     {
       name: "United Nations Environment Programme (UNEP)",
@@ -503,12 +496,17 @@ const Registration: React.FC<RegistrationProps> = ({
     setFormData((prev) => ({
       ...prev,
       [name]: fieldValue,
-      ...(name === "committee1" ? { committee2: "", committee3: "", portfolio1: [] } : {}),
+      ...(name === "committee1"
+        ? { committee2: "", committee3: "", portfolio1: [] }
+        : {}),
       ...(name === "committee2" ? { committee3: "", portfolio2: [] } : {}),
     }));
   };
 
-  const handlePortfolioChange = (committeeKey: "portfolio1" | "portfolio2" | "portfolio3", value: string) => {
+  const handlePortfolioChange = (
+    committeeKey: "portfolio1" | "portfolio2" | "portfolio3",
+    value: string
+  ) => {
     setFormData((prev) => {
       const selected = prev[committeeKey];
       let updated: string[];
@@ -526,35 +524,17 @@ const Registration: React.FC<RegistrationProps> = ({
     });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData((prev) => ({ ...prev, photo: e.target.files![0] }));
-    }
-  };
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     setFormData((prev) => ({ ...prev, photo: e.target.files![0] }));
+  //   }
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      let photoURL = "";
-
-      if (formData.photo) {
-        const fileName = `${Date.now()}-${formData.photo.name}`;
-        const filePath = `registrations/${Date.now()}-${formData.photo.name}`;
-
-        const { error: uploadError } = await supabase.storage
-          .from("payment")
-          .upload(filePath, formData.photo, {
-            contentType: formData.photo.type,
-          });
-
-        if (uploadError) throw uploadError;
-
-        const { data } = supabase.storage
-          .from("payment")
-          .getPublicUrl(fileName);
-        photoURL = data.publicUrl;
-      }
+      console.log(formData);
 
       const { error: insertError } = await supabase
         .from("registrations")
@@ -573,8 +553,7 @@ const Registration: React.FC<RegistrationProps> = ({
             committee3: formData.committee3,
             portfolio3: formData.portfolio3,
             accommodation: formData.accommodation,
-            delegation: formData.delegation,
-            photo: photoURL,
+
             created_at: new Date(),
           },
         ]);
@@ -597,7 +576,6 @@ const Registration: React.FC<RegistrationProps> = ({
         portfolio3: [],
         accommodation: false,
         delegation: false,
-        photo: null,
       });
 
       onRegisterSuccess();
@@ -614,7 +592,7 @@ const Registration: React.FC<RegistrationProps> = ({
   };
 
   const getTotalFee = () => {
-    let total = getCommitteeFee();
+    const total = getCommitteeFee();
     return total;
   };
 
@@ -782,8 +760,6 @@ const Registration: React.FC<RegistrationProps> = ({
                   </div>
                 </div>
 
-
-
                 {/* Committee Preferences + Portfolio */}
                 <div>
                   <label className="block text-indigo-300 text-sm font-medium mb-2">
@@ -868,8 +844,7 @@ const Registration: React.FC<RegistrationProps> = ({
                       I want to join session (FREE)
                     </label>
                   </div>
-                  <div className="flex items-center">
-                  </div>
+                  <div className="flex items-center"></div>
                 </div>
                 <button
                   type="submit"
@@ -943,19 +918,15 @@ const Registration: React.FC<RegistrationProps> = ({
                   </li>
                 </ul>
                 <label className="ml-2 text-indigo-300">
-                      *Fee for IIT(BHU) - ₹699
-                    </label>
-                    <label className="ml-2 text-indigo-300">
-                       BHU - ₹1199
-                    </label>
-
+                  *Fee for IIT(BHU) - ₹699
+                </label>
+                <label className="ml-2 text-indigo-300">BHU - ₹1199</label>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
   );
 };
 
