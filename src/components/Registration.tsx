@@ -895,12 +895,6 @@ const Registration: React.FC<RegistrationProps> = ({
                     <span>Committee Fee:</span>
                     <span>₹{getCommitteeFee()}</span>
                   </div>
-                  {formData.accommodation && (
-                    <div className="flex justify-between text-indigo-200">
-                      <span>Accommodation:</span>
-                      <span>₹500</span>
-                    </div>
-                  )}
                   <div className="border-t border-indigo-500/30 pt-3">
                     <div className="flex justify-between text-white font-bold text-lg">
                       <span>Total Amount:</span>
