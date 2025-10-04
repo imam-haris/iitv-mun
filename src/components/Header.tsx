@@ -104,8 +104,8 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile dropdown menu */}
       {isMenuOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-purple-500/20">
-          <nav className="flex flex-col space-y-3 pt-4">
+        <div className="md:hidden mt-2 pb-6 border-t border-purple-500/20">
+          <nav className="flex flex-col space-y-3 pt-6">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -158,6 +158,11 @@ const Header: React.FC<HeaderProps> = ({
         </div>
       )}
     </header>
+
+  );
+};
+
+export default Header;
 
   );
 };
