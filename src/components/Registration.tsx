@@ -6,6 +6,7 @@ import { supabase } from "../../supabaseClient";
 interface RegistrationProps {
   closeRegistration: () => void;
   onRegisterSuccess: () => void;
+  email: string;
 }
 
 interface FormDataType {
@@ -26,6 +27,7 @@ interface FormDataType {
 }
 
 const Registration: React.FC<RegistrationProps> = ({
+  email,
   closeRegistration,
   onRegisterSuccess,
 }) => {
@@ -45,6 +47,7 @@ const Registration: React.FC<RegistrationProps> = ({
     accommodation: false,
     delegation: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const committees = [
     {
@@ -479,71 +482,70 @@ const Registration: React.FC<RegistrationProps> = ({
       name: "United Nations Environment Programme (UNEP)",
       fee: 1799,
       portfolios: [
-  "Afghanistan",
-  "Algeria",
-  "Argentina",
-  "Australia",
-  "Bangladesh",
-  "Brazil",
-  "Cambodia",
-  "Canada",
-  "Chile",
-  "China",
-  "Czech Republic",
-  "Denmark",
-  "Dominica",
-  "Ecuador",
-  "Egypt",
-  "Ethiopia",
-  "France",
-  "Germany",
-  "Ghana",
-  "Greece",
-  "Haiti",
-  "India",
-  "Indonesia",
-  "Iran",
-  "Iraq",
-  "Ireland",
-  "Israel",
-  "Italy",
-  "Japan",
-  "Kazakhstan",
-  "Kuwait",
-  "Libya",
-  "Madagascar",
-  "Maldives",
-  "Mexico",
-  "Montenegro",
-  "Myanmar",
-  "Nepal",
-  "New Zealand",
-  "Pakistan",
-  "Palestine",
-  "Philippines",
-  "Poland",
-  "Russia",
-  "Rwanda",
-  "Saudi Arabia",
-  "Serbia",
-  "Singapore",
-  "South Africa",
-  "South Korea",
-  "Spain",
-  "Sri Lanka",
-  "Sweden",
-  "Syria",
-  "Turkiye",
-  "UAE",
-  "Ukraine",
-  "UK",
-  "USA",
-  "Vietnam",
-  "Yemen",
-  "Malta",
-  "Marshall Islands"
-]
-,
+        "Afghanistan",
+        "Algeria",
+        "Argentina",
+        "Australia",
+        "Bangladesh",
+        "Brazil",
+        "Cambodia",
+        "Canada",
+        "Chile",
+        "China",
+        "Czech Republic",
+        "Denmark",
+        "Dominica",
+        "Ecuador",
+        "Egypt",
+        "Ethiopia",
+        "France",
+        "Germany",
+        "Ghana",
+        "Greece",
+        "Haiti",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Kazakhstan",
+        "Kuwait",
+        "Libya",
+        "Madagascar",
+        "Maldives",
+        "Mexico",
+        "Montenegro",
+        "Myanmar",
+        "Nepal",
+        "New Zealand",
+        "Pakistan",
+        "Palestine",
+        "Philippines",
+        "Poland",
+        "Russia",
+        "Rwanda",
+        "Saudi Arabia",
+        "Serbia",
+        "Singapore",
+        "South Africa",
+        "South Korea",
+        "Spain",
+        "Sri Lanka",
+        "Sweden",
+        "Syria",
+        "Turkiye",
+        "UAE",
+        "Ukraine",
+        "UK",
+        "USA",
+        "Vietnam",
+        "Yemen",
+        "Malta",
+        "Marshall Islands",
+      ],
     },
   ];
 
@@ -598,6 +600,10 @@ const Registration: React.FC<RegistrationProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (isSubmitting) return; // 👈 prevent multiple clicks
+
+    setIsSubmitting(true);
+
     try {
       console.log(formData);
 
@@ -606,7 +612,7 @@ const Registration: React.FC<RegistrationProps> = ({
         .insert([
           {
             name: formData.name,
-            email: formData.email,
+            email: email,
             phone: formData.phone,
             institution: formData.institution,
             city: formData.city,
@@ -648,6 +654,8 @@ const Registration: React.FC<RegistrationProps> = ({
     } catch (error) {
       console.error("Registration error:", error);
       alert("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -745,11 +753,11 @@ const Registration: React.FC<RegistrationProps> = ({
                     <input
                       type="email"
                       name="email"
-                      value={formData.email}
+                      value={email}
                       onChange={handleInputChange}
                       placeholder="Enter your email"
-                      required
-                      className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                      disabled
+                      className="w-full px-4 py-3 cursor-not-allowed bg-indigo-900/30 border border-indigo-500/30 rounded-lg  placeholder-indigo-400 focus:outline-none focus:border-indigo-400 text-gray-400 transition-colors"
                     />
                   </div>
                 </div>
