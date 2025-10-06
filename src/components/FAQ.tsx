@@ -7,11 +7,11 @@ const FAQ = () => {
   const faqs = [
     {
       question: 'What is the registration fee for IITBHU MUN 2025?',
-      answer: 'The registration fee varies based on the institute. Fee is ₹1199 and ₹699 for BHU and IIT students respectively. For outsiders it is ₹1799.'
+      answer: 'The registration fee is ₹1799.'
     },
     {
       question: 'How do I register for the conference?',
-      answer: 'Registration can be completed online through our official website. Fill out the registration form, select your preferred committee, and complete the payment process. You will receive a confirmation email with further details.'
+      answer: 'Registration can be completed online through our official website. Fill out the registration form, select your preferred committee and portfolio. You will receive a call from the team regarding confirmation of portfolio allotment with further payment procedure.'
     },
     {
       question: 'What documents do I need to bring?',
