@@ -51,7 +51,7 @@ const Gallery = () => {
     {
       icon: Users,
       title: 'Previous Editions',
-      value: '12+',
+      value: '13',
       description: 'Years of successful conferences'
     },
     {
