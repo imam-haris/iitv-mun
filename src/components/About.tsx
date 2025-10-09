@@ -6,7 +6,7 @@ const About = () => {
     { icon: Users, label: 'Delegates', value: '5000+' },
     { icon: Globe, label: 'Nationalities', value: '31' },
     { icon: Award, label: 'Committees', value: '6' },
-    { icon: Target, label: 'Years', value: '10+' }
+    { icon: Target, label: 'Years', value: '13' }
   ];
 
   return (
