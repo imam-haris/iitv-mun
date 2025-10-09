@@ -21,7 +21,6 @@ function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [loadingCheck, setLoadingCheck] = useState(true);
   const [showRegistration, setShowRegistration] = useState(false);
-  console.log(user);
 
   // Check if user already registered in DB
   const checkRegistration = async (email?: string) => {
@@ -168,7 +167,6 @@ function App() {
               </button>
               <div className="overflow-y-auto max-h-[90vh] pr-4">
                 <Registration
-                  email={user?.email || ""}
                   closeRegistration={() => setShowRegistration(false)}
                   onRegisterSuccess={checkRegistration}
                 />
@@ -179,9 +177,7 @@ function App() {
         <div className="fixed bottom-6 left-0 w-full overflow-hidden z-50">
           <div className="whitespace-nowrap animate-marquee">
             <div className="inline-block bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white px-6 py-3 rounded-xl shadow-lg border border-purple-400 mx-4">
-              <span className="font-bold text-pink-400">FREE FOR ALL</span> – ✨
-              Integrated Orientation Session : MUN and Research Training ✨ |
-              Registration is Live! 🚀 Limited Seats Available
+              <span className="font-bold text-pink-400">FREE FOR ALL</span> – ✨ Integrated Orientation Session : MUN and Research Training ✨ | Registration is Live! 🚀 Limited Seats Available
             </div>
           </div>
         </div>
