@@ -45,16 +45,16 @@ const Registration: React.FC<RegistrationProps> = ({
     accommodation: false,
     delegation: false,
   });
-  useEffect(()=>{
-    const fetchUserEmail = async()=>{
-      const {data , error} = await supabase.auth.getUser();
-      if(data?.user){
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (data?.user) {
         const userEmail = data.user.email || "";
-        setFormData((prev)=>({...prev , email: userEmail}));
+        setFormData((prev) => ({ ...prev, email: userEmail }));
       }
     };
     fetchUserEmail();
-  } ,[]);
+  }, []);
   const committees = [
     {
       name: "Disarmament and International Security Committee (DISEC)",
@@ -488,71 +488,71 @@ const Registration: React.FC<RegistrationProps> = ({
       name: "United Nations Environment Programme (UNEP)",
       fee: 1799,
       portfolios: [
-  "Afghanistan",
-  "Algeria",
-  "Argentina",
-  "Australia",
-  "Bangladesh",
-  "Brazil",
-  "Cambodia",
-  "Canada",
-  "Chile",
-  "China",
-  "Czech Republic",
-  "Denmark",
-  "Dominica",
-  "Ecuador",
-  "Egypt",
-  "Ethiopia",
-  "France",
-  "Germany",
-  "Ghana",
-  "Greece",
-  "Haiti",
-  "India",
-  "Indonesia",
-  "Iran",
-  "Iraq",
-  "Ireland",
-  "Israel",
-  "Italy",
-  "Japan",
-  "Kazakhstan",
-  "Kuwait",
-  "Libya",
-  "Madagascar",
-  "Maldives",
-  "Mexico",
-  "Montenegro",
-  "Myanmar",
-  "Nepal",
-  "New Zealand",
-  "Pakistan",
-  "Palestine",
-  "Philippines",
-  "Poland",
-  "Russia",
-  "Rwanda",
-  "Saudi Arabia",
-  "Serbia",
-  "Singapore",
-  "South Africa",
-  "South Korea",
-  "Spain",
-  "Sri Lanka",
-  "Sweden",
-  "Syria",
-  "Turkiye",
-  "UAE",
-  "Ukraine",
-  "UK",
-  "USA",
-  "Vietnam",
-  "Yemen",
-  "Malta",
-  "Marshall Islands"
-]
-,
+        "Afghanistan",
+        "Algeria",
+        "Argentina",
+        "Australia",
+        "Bangladesh",
+        "Brazil",
+        "Cambodia",
+        "Canada",
+        "Chile",
+        "China",
+        "Czech Republic",
+        "Denmark",
+        "Dominica",
+        "Ecuador",
+        "Egypt",
+        "Ethiopia",
+        "France",
+        "Germany",
+        "Ghana",
+        "Greece",
+        "Haiti",
+        "India",
+        "Indonesia",
+        "Iran",
+        "Iraq",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Kazakhstan",
+        "Kuwait",
+        "Libya",
+        "Madagascar",
+        "Maldives",
+        "Mexico",
+        "Montenegro",
+        "Myanmar",
+        "Nepal",
+        "New Zealand",
+        "Pakistan",
+        "Palestine",
+        "Philippines",
+        "Poland",
+        "Russia",
+        "Rwanda",
+        "Saudi Arabia",
+        "Serbia",
+        "Singapore",
+        "South Africa",
+        "South Korea",
+        "Spain",
+        "Sri Lanka",
+        "Sweden",
+        "Syria",
+        "Turkiye",
+        "UAE",
+        "Ukraine",
+        "UK",
+        "USA",
+        "Vietnam",
+        "Yemen",
+        "Malta",
+        "Marshall Islands"
+      ]
+      ,
     },
   ];
 
@@ -759,8 +759,9 @@ const Registration: React.FC<RegistrationProps> = ({
                       placeholder="Enter your email"
                       required
                       readOnly
-                      className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                      className="w-full px-4 py-3 bg-indigo-800/30 border border-indigo-400/30 rounded-lg text-indigo-200 placeholder-indigo-300 focus:outline-none cursor-not-allowed hover:bg-indigo-700/40 transition-all"
                     />
+
                   </div>
                 </div>
 
