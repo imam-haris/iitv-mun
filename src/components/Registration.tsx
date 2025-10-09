@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { User, CreditCard, CheckCircle, Calendar } from "lucide-react";
 
 import { supabase } from "../../supabaseClient";
@@ -45,7 +45,16 @@ const Registration: React.FC<RegistrationProps> = ({
     accommodation: false,
     delegation: false,
   });
-
+  useEffect(()=>{
+    const fetchUserEmail = async()=>{
+      const {data , error} = await supabase.auth.getUser();
+      if(data?.user){
+        const userEmail = data.user.email || "";
+        setFormData((prev)=>({...prev , email: userEmail}));
+      }
+    };
+    fetchUserEmail();
+  } ,[]);
   const committees = [
     {
       name: "Disarmament and International Security Committee (DISEC)",
@@ -749,6 +758,7 @@ const Registration: React.FC<RegistrationProps> = ({
                       onChange={handleInputChange}
                       placeholder="Enter your email"
                       required
+                      readOnly
                       className="w-full px-4 py-3 bg-indigo-900/30 border border-indigo-500/30 rounded-lg text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
                     />
                   </div>
