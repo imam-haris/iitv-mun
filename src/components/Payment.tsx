@@ -125,7 +125,7 @@ const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
              />
 
             <p className="mt-5 text-purple-300 text-center">
-              Scan to pay ₹{amount} via UPI
+              Scan to pay via UPI
             </p>
           </div>
         )}
