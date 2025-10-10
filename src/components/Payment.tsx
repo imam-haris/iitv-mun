@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import qr from "../assets/QR-Code.jpg";
 import { useNavigate } from "react-router-dom";
+import QRCode from "react-qr-code";
 const SUPABASE_URL = "https://oauanxichcsmshpzhfdb.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hdWFueGljaGNzbXNocHpoZmRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwMjU3NTEsImV4cCI6MjA3NTYwMTc1MX0.6Q6deCwHsaVIXkQtru1TGa_Q8npLHec5PWa4Zrn31qE";
 
@@ -90,7 +91,7 @@ const Payment: React.FC = () => {
       setUploading(false);
     }
   };
-
+const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
   return (
     <section className="min-h-screen bg-[#1f073c] text-white flex flex-col items-center justify-center p-6">
       <h1 className="mt-10 text-4xl font-bold mb-6">Payment Portal</h1>
@@ -116,27 +117,15 @@ const Payment: React.FC = () => {
 
         {amount && (
           <div className="relative flex flex-col items-center mb-4">
-            {/* Dynamic QR (behind) */}
-            <img
-              src={`https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=upi://pay?pa=yourupi@oksbi&am=${amount}&cu=INR&tn=IITBHU%20MUN%20Payment`}
-              alt="Dynamic UPI QR"
-              className="w-48 h-48 rounded-lg z-0"
-            />
-
-
-            {/* Static frame overlay */}
-            <img
-              src={qr}
-              alt="IITBHU MUN QR Frame"
-              className="absolute w-48 h-48 pointer-events-none z-10 top-0"
-            />
+            <QRCode 
+            value={upiURL}
+             size={150}
+              fgColor="#fff"
+              bgColor="#1f073c"
+             />
 
             <p className="mt-5 text-purple-300 text-center">
               Scan to pay ₹{amount} via UPI
-            </p>
-            {/* Disclaimer */}
-            <p className="mt-2 text-red-400 text-center text-sm">
-              ⚠️ Please ensure you pay exactly ₹{amount}. Payments not matching the amount may lead to registration failure.
             </p>
           </div>
         )}
