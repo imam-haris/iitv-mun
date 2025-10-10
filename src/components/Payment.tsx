@@ -110,9 +110,9 @@ const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
           className="w-full p-2 rounded-lg text-black mb-4"
         >
           <option value="">-- Choose --</option>
-          <option value="outsider">Outsider (₹1799)</option>
-          <option value="bhu">BHU Student (₹1200)</option>
-          <option value="iit">IIT BHU Student (₹700)</option>
+          <option value="outsider">Outsider </option>
+          <option value="bhu">BHU Student </option>
+          <option value="iit">IIT BHU Student</option>
         </select>
 
         {amount && (
