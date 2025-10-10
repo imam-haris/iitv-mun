@@ -19,9 +19,9 @@ interface PaymentRecord {
 
 const Payment: React.FC = () => {
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
-    if(!userEmail){
+    if (!userEmail) {
       alert("Please log in to access the payment portal.");
       window.location.href = "/";
     }
@@ -35,8 +35,8 @@ const Payment: React.FC = () => {
 
   const categories: Record<string, number> = {
     outsider: 1799,
-    bhu: 1200,
-    iit: 700,
+    bhu: 1199,
+    iit: 699,
   };
 
   const handleCategoryChange = (
@@ -91,7 +91,7 @@ const Payment: React.FC = () => {
       setUploading(false);
     }
   };
-const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
+  const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
   return (
     <section className="min-h-screen bg-[#1f073c] text-white flex flex-col items-center justify-center p-6">
       <h1 className="mt-10 text-4xl font-bold mb-6">Payment Portal</h1>
@@ -117,12 +117,12 @@ const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
 
         {amount && (
           <div className="relative flex flex-col items-center mb-4">
-            <QRCode 
-            value={upiURL}
-             size={150}
+            <QRCode
+              value={upiURL}
+              size={150}
               fgColor="#fff"
               bgColor="#1f073c"
-             />
+            />
 
             <p className="mt-5 text-purple-300 text-center">
               Scan to pay via UPI
