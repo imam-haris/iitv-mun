@@ -8,7 +8,7 @@ import Gallery from "./components/Gallery";
 import Registration from "./components/Registration";
 import Footer from "./components/Footer";
 import { supabase } from "../supabaseClient";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import type { User } from "@supabase/supabase-js";
 import ScrollToTop from "./ScrollToTop";
 import SecretaryGeneralLetter from "./components/SecretaryGeneralLetter";
@@ -16,12 +16,12 @@ import Teams from "./components/Teams";
 import Sponsors from "./components/sponsors";
 import FAQ from "./components/FAQ";
 import Collaborators from "./components/Collaborators";
+import Payment from "./components/Payment";
 function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isRegistered, setIsRegistered] = useState(false);
   const [loadingCheck, setLoadingCheck] = useState(true);
   const [showRegistration, setShowRegistration] = useState(false);
-
   // Check if user already registered in DB
   const checkRegistration = async (email?: string) => {
     const userEmail = email ?? user?.email;
@@ -80,9 +80,11 @@ function App() {
     const { error } = await supabase.auth.signOut();
     if (error) alert(error.message);
     else {
+      localStorage.clear();
       setUser(null);
       setIsRegistered(false);
       setShowRegistration(false);
+      window.location.href = "/";
     }
   };
 
@@ -141,6 +143,14 @@ function App() {
               <div>
                 <Collaborators />
                 <Sponsors />
+              </div>
+            }
+          />
+          <Route
+            path="/payment"
+            element={
+              <div>
+                <Payment />
               </div>
             }
           />

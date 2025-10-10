@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useEffect } from "react";
 
 
 interface HeaderProps {
@@ -20,13 +21,27 @@ const Header: React.FC<HeaderProps> = ({
   isRegistered,
   loadingCheck,
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (user) {
+      const fullName = user.user_metadata?.full_name || "Anonymous";
+      const phone = user.user_metadata?.phone || "N/A";
+      const email = user.email || "Unknown";
+
+      localStorage.setItem("userName", fullName);
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPhone", phone);
+    }
+  }, [user]);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Committees", href: "/committees" },
     { name: "Secretariat", href: "/secretariat" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Payment", href: "/payment" },
     { name: "Partners", href: "/sponsors" },
     { name: "FAQ", href: "/faq" }
   ];
@@ -72,12 +87,13 @@ const Header: React.FC<HeaderProps> = ({
             </button>
           ) : (
             <>
+
               <button
                 onClick={onRegisterClick}
                 disabled={isRegistered || loadingCheck}
                 className={`px-6 py-2 rounded-full text-white transition-all duration-300 ${isRegistered
-                    ? "bg-green-600 cursor-not-allowed"
-                    : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                  ? "bg-green-600 cursor-not-allowed"
+                  : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
                   }`}
               >
                 {renderButtonText()}
@@ -136,8 +152,8 @@ const Header: React.FC<HeaderProps> = ({
                   }}
                   disabled={isRegistered || loadingCheck}
                   className={`px-6 py-2 rounded-full text-white transition-all duration-300 ${isRegistered
-                      ? "bg-green-600 cursor-not-allowed"
-                      : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                    ? "bg-green-600 cursor-not-allowed"
+                    : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
                     } text-center`}
                 >
                   {renderButtonText()}
@@ -145,8 +161,10 @@ const Header: React.FC<HeaderProps> = ({
 
                 <button
                   onClick={() => {
+                    localStorage.clear();
                     onLogout();
                     setIsMenuOpen(false);
+                    navigate("/");
                   }}
                   className="px-4 py-2 rounded-full text-white bg-red-600 hover:bg-red-700 transition-all duration-300 text-center"
                 >

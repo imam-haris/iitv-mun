@@ -66,7 +66,7 @@ const Hero: React.FC<HeroProps> = ({ onRegisterClick = () => { } }) => {
       <div className="flex justify-center items-center min-h-screen relative z-10 px-4 text-center">
         <div className="max-w-3xl">
           <h1 className="font-bold text-white leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            <span className="block sm:inline">IITBHU</span>{" "}
+            <span className="block sm:inline">IITBHU <br /></span>{" "}
             <span className="block sm:inline">MODEL UNITED NATIONS</span>
           </h1>
 
