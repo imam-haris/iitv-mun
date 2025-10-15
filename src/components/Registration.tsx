@@ -994,6 +994,7 @@ const Registration: React.FC<RegistrationProps> = ({
                   </li>
                 </ul>
                 <label className="ml-2 text-indigo-300">
+                  <CreditCard className="mr-3" size={20} />
                   Payment should be done in Payment Tab after submitting the form
                 </label>
               </div>
