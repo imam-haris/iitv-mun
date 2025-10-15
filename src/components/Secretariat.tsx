@@ -8,7 +8,7 @@ import raghavImg from "../assets/raghav2.jpeg";
 import abhishekImg from "../assets/abhishek2.jpg";
 import devaImg from "../assets/deva.jpeg";
 import dhruvImg from "../assets/dhruv.jpg";
-import akanshaImg from "../assets/akansha.jpg";
+import akanshaImg from "../assets/Akansha.jpg";
 const Secretariat = () => {
   const secretariatMembers = [
     {
