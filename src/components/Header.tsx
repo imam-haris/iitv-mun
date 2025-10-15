@@ -72,7 +72,8 @@ const Header: React.FC<HeaderProps> = ({
           {navItems.map((item) => (
             <span
               key={item.name}
-              className="text-white hover:text-purple-300 transition-colors duration-300 font-medium"
+              className={`text-white hover:text-purple-300 transition-colors duration-300 font-medium ${item.name === "Payment" ? "payment-highlight" : ""
+                }`}
             >
               <Link to={item.href}>{item.name}</Link>
             </span>

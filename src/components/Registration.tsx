@@ -993,6 +993,9 @@ const Registration: React.FC<RegistrationProps> = ({
                     Chance to win awards and recognition
                   </li>
                 </ul>
+                <label className="ml-2 text-indigo-300">
+                  Payment should be done in Payment Tab after submitting the form
+                </label>
               </div>
             </div>
           </div>
