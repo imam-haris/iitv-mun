@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import qr from "../assets/QR-Code.jpg";
-import { useNavigate } from "react-router-dom";
 import QRCode from "react-qr-code";
+import { useNavigate } from "react-router-dom";
+
 const SUPABASE_URL = "https://oauanxichcsmshpzhfdb.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hdWFueGljaGNzbXNocHpoZmRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwMjU3NTEsImV4cCI6MjA3NTYwMTc1MX0.6Q6deCwHsaVIXkQtru1TGa_Q8npLHec5PWa4Zrn31qE";
-
 const supabase: SupabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 interface PaymentRecord {
@@ -15,9 +14,12 @@ interface PaymentRecord {
   category: string;
   amount: number;
   screenshot_url: string;
+  id_card_url: string;
+  coupon_code?: string;
 }
 
 const Payment: React.FC = () => {
+
   const navigate = useNavigate();
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
@@ -25,11 +27,13 @@ const Payment: React.FC = () => {
       alert("Please log in to access the payment portal.");
       window.location.href = "/";
     }
-  }, [navigate])
+  }, [navigate]);
 
   const [category, setCategory] = useState<string>("");
   const [amount, setAmount] = useState<number | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const [screenshot, setScreenshot] = useState<File | null>(null);
+  const [idCard, setIdCard] = useState<File | null>(null);
+  const [couponCode, setCouponCode] = useState<string>("");
   const [uploading, setUploading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
 
@@ -39,9 +43,7 @@ const Payment: React.FC = () => {
     iit: 699,
   };
 
-  const handleCategoryChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ): void => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const value = e.target.value;
     setCategory(value);
     setAmount(categories[value]);
@@ -49,49 +51,66 @@ const Payment: React.FC = () => {
 
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!file || !amount) {
-      setMessage("⚠️ Please select a category and upload a payment screenshot.");
+
+    if (!screenshot || !idCard || !amount) {
+      setMessage("⚠️ Please upload both payment screenshot and ID card.");
       return;
     }
 
     try {
       setUploading(true);
 
-      const fileName = `${Date.now()}_${file.name}`;
-      const { error: uploadError } = await supabase.storage
+      // Upload Payment Screenshot
+      const screenshotName = `${Date.now()}_${screenshot.name}`;
+      const { error: screenshotError } = await supabase.storage
         .from("payment_screenshots")
-        .upload(fileName, file);
+        .upload(screenshotName, screenshot);
 
-      if (uploadError) throw uploadError;
+      if (screenshotError) throw screenshotError;
 
-      const imageUrl = `${SUPABASE_URL}/storage/v1/object/public/payment_screenshots/${fileName}`;
+      const screenshotUrl = `${SUPABASE_URL}/storage/v1/object/public/payment_screenshots/${screenshotName}`;
 
+      // Upload ID Card
+      const idCardName = `${Date.now()}_${idCard.name}`;
+      const { error: idError } = await supabase.storage
+        .from("id_cards")
+        .upload(idCardName, idCard);
+
+      if (idError) throw idError;
+
+      const idCardUrl = `${SUPABASE_URL}/storage/v1/object/public/id_cards/${idCardName}`;
+
+      // Prepare Data for Database
       const paymentData: PaymentRecord = {
         name: localStorage.getItem("userName") || "Anonymous",
         email: localStorage.getItem("userEmail") || "Unknown",
         phone: localStorage.getItem("userPhone") || "N/A",
         category,
         amount,
-        screenshot_url: imageUrl,
+        screenshot_url: screenshotUrl,
+        id_card_url: idCardUrl,
+        coupon_code: couponCode || "",
       };
 
-      const { error: dbError } = await supabase
-        .from("payments")
-        .insert([paymentData]);
+      const { error: dbError } = await supabase.from("payments").insert([paymentData]);
 
       if (dbError) throw dbError;
 
       setMessage("✅ Payment record saved successfully!");
       setCategory("");
       setAmount(null);
-      setFile(null);
+      setScreenshot(null);
+      setIdCard(null);
+      setCouponCode("");
     } catch (error: any) {
       setMessage(`❌ Error: ${error.message}`);
     } finally {
       setUploading(false);
     }
   };
+
   const upiURL = `upi://pay?pa=42373833491@sbi&pn=MUN&am=${amount}&cu=INR`;
+
   return (
     <section className="min-h-screen bg-[#1f073c] text-white flex flex-col items-center justify-center p-6">
       <h1 className="mt-10 text-4xl font-bold mb-6">Payment Portal</h1>
@@ -110,34 +129,51 @@ const Payment: React.FC = () => {
           className="w-full p-2 rounded-lg text-black mb-4"
         >
           <option value="">-- Choose --</option>
-          <option value="outsider">Outsider </option>
-          <option value="bhu">BHU Student </option>
+          <option value="outsider">Outsider</option>
+          <option value="bhu">BHU Student</option>
           <option value="iit">IIT BHU Student</option>
         </select>
 
         {amount && (
           <div className="relative flex flex-col items-center mb-4">
-            <QRCode
-              value={upiURL}
-              size={150}
-              fgColor="#fff"
-              bgColor="#1f073c"
-            />
-
+            <QRCode value={upiURL} size={150} fgColor="#fff" bgColor="#1f073c" />
             <p className="mt-5 text-purple-300 text-center">
               Scan to pay via UPI
             </p>
           </div>
         )}
 
-
+        {/* Coupon Code (Optional) */}
         <label className="block mb-2 text-purple-200 font-medium">
-          Upload Screenshot
+          Coupon Code (if you have from Campus Ambassador)
+        </label>
+        <input
+          type="text"
+          value={couponCode}
+          onChange={(e) => setCouponCode(e.target.value)}
+          placeholder="Enter your coupon code"
+          className="mb-4 w-full p-2 rounded-lg text-black"
+        />
+
+        {/* ID Card Upload */}
+        <label className="block mb-2 text-purple-200 font-medium">
+          Upload Your ID Card
         </label>
         <input
           type="file"
           accept="image/*"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
+          onChange={(e) => setIdCard(e.target.files?.[0] || null)}
+          className="mb-4 w-full"
+        />
+
+        {/* Payment Screenshot Upload */}
+        <label className="block mb-2 text-purple-200 font-medium">
+          Upload Payment Screenshot
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setScreenshot(e.target.files?.[0] || null)}
           className="mb-4 w-full"
         />
 
@@ -152,7 +188,6 @@ const Payment: React.FC = () => {
         {message && (
           <p className="mt-4 text-center text-purple-200">{message}</p>
         )}
-
       </form>
     </section>
   );
