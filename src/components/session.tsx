@@ -76,24 +76,27 @@ const Session: React.FC = () => {
       <div className="hidden md:block">
         {showAnnouncement ? (
           <div className="fixed right-6 top-1/2 transform translate-y-[20%] z-40 transition-all">
-            <div className="relative bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white p-5 rounded-2xl shadow-2xl w-80 border border-purple-400">
+            <div className="relative bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white p-5 rounded-2xl shadow-2xl w-80 border border-purple-400 animate-glow overflow-hidden">
+              {/* shining overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
+
               <button
                 onClick={() => setShowAnnouncement(false)}
-                className="absolute top-2 right-3 text-white text-lg font-bold hover:text-pink-400 transition-all"
+                className="absolute top-2 right-3 text-white text-lg font-bold hover:text-pink-400 transition-all z-10"
               >
                 ✕
               </button>
-              <h3 className="font-bold text-pink-400 text-lg mb-2">
+              <h3 className="font-bold text-pink-400 text-lg mb-2 relative z-10">
                 FREE FOR ALL
               </h3>
-              <p className="text-sm mb-4 leading-relaxed">
+              <p className="text-sm mb-4 leading-relaxed relative z-10">
                 ✨ Integrated Orientation Session : MUN and Research Training ✨
                 <br />
                 Registration is Live! 🚀 Limited Seats Available
               </p>
               <button
                 onClick={() => handleJoinClick()}
-                className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded-lg font-semibold shadow-lg transition-all"
+                className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded-lg font-semibold shadow-lg transition-all relative z-10"
               >
                 Join the Session
               </button>
@@ -101,6 +104,8 @@ const Session: React.FC = () => {
           </div>
         ) : (
           <div className="fixed right-6 top-1/2 transform translate-y-[20%] z-30">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
+
             <button
               onClick={() => setShowAnnouncement(true)}
               className="bg-gradient-to-r from-purple-700 to-indigo-900 text-white px-4 py-2 rounded-full shadow-lg font-semibold hover:scale-105 transition-all"
@@ -113,7 +118,6 @@ const Session: React.FC = () => {
 
       {/* 📱 Mobile Floating Button & Slide-in Card */}
       <div className="md:hidden">
-        {/* Floating Button (always visible on mobile) */}
         {!showAnnouncement && (
           <button
             onClick={() => setShowAnnouncement(true)}
@@ -123,26 +127,27 @@ const Session: React.FC = () => {
           </button>
         )}
 
-        {/* Slide-in Card */}
         {showAnnouncement && (
-          <div className="fixed bottom-0 right-0 w-80 max-w-[90%] bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white p-5 rounded-tl-2xl shadow-2xl border border-purple-400 z-50 animate-slideIn">
+          <div className="fixed bottom-0 right-0 w-80 max-w-[90%] bg-gradient-to-r from-purple-700 via-purple-900 to-indigo-900 text-white p-5 rounded-tl-2xl shadow-2xl border border-purple-400 z-50 animate-slideIn animate-glow overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine"></div>
+
             <button
               onClick={() => setShowAnnouncement(false)}
-              className="absolute top-2 right-3 text-white text-lg font-bold hover:text-pink-400 transition-all"
+              className="absolute top-2 right-3 text-white text-lg font-bold hover:text-pink-400 transition-all z-10"
             >
               ✕
             </button>
-            <h3 className="font-bold text-pink-400 text-lg mb-2">
+            <h3 className="font-bold text-pink-400 text-lg mb-2 relative z-10">
               FREE FOR ALL
             </h3>
-            <p className="text-sm mb-4 leading-relaxed">
+            <p className="text-sm mb-4 leading-relaxed relative z-10">
               ✨ Integrated Orientation Session : MUN and Research Training ✨
               <br />
               Registration is Live! 🚀 Limited Seats Available
             </p>
             <button
               onClick={() => handleJoinClick()}
-              className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded-lg font-semibold shadow-lg transition-all"
+              className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded-lg font-semibold shadow-lg transition-all relative z-10"
             >
               Join the Session
             </button>
@@ -150,7 +155,7 @@ const Session: React.FC = () => {
         )}
       </div>
 
-      {/* Animation for mobile slide-in */}
+      {/* ✨ Animations */}
       <style>
         {`
           @keyframes slideIn {
@@ -159,6 +164,24 @@ const Session: React.FC = () => {
           }
           .animate-slideIn {
             animation: slideIn 0.4s ease-out;
+          }
+
+          /* Soft pulsing glow */
+          @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(236,72,153,0.3); }
+            50% { box-shadow: 0 0 40px rgba(236,72,153,0.6); }
+          }
+          .animate-glow {
+            animation: glow 2.5s ease-in-out infinite;
+          }
+
+          /* Shimmer line moving across */
+          @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+          }
+          .animate-shine {
+            animation: shine 3s linear infinite;
           }
         `}
       </style>
