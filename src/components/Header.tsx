@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({
     { name: "Committees", href: "/committees" },
     { name: "Secretariat", href: "/secretariat" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Payment", href: "/payment" },
+    // { name: "Payment", href: "/payment" },
     { name: "Partners", href: "/sponsors" },
     { name: "FAQ", href: "/faq" }
   ];
