@@ -149,14 +149,14 @@ function App() {
               </div>
             }
           />
-          {/* <Route
+          <Route
             path="/payment"
             element={
               <div>
                 <Payment />
               </div>
             }
-          /> */}
+          />
           <Route
             path="/faq"
             element={
