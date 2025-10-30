@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({
     { name: "Committees", href: "/committees" },
     { name: "Secretariat", href: "/secretariat" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Payment", href: "/payment" },
+    // { name: "Payment", href: "/payment" },
     { name: "Partners", href: "/sponsors" },
     { name: "FAQ", href: "/faq" }
   ];
@@ -91,7 +91,9 @@ const Header: React.FC<HeaderProps> = ({
 
               <button
                 onClick={onRegisterClick}
-                disabled={isRegistered || loadingCheck}
+                // disabled={isRegistered || loadingCheck}
+            disabled = {true}
+
                 className={`px-6 py-2 rounded-full text-white transition-all duration-300 ${isRegistered
                   ? "bg-green-600 cursor-not-allowed"
                   : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"

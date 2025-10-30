@@ -86,20 +86,21 @@ const Session: React.FC = () => {
               >
                 ✕
               </button>
-              <h3 className="font-bold text-pink-400 text-lg mb-2 relative z-10">
-                FREE FOR ALL
+              <h3 className="font-bold text-white-400 text-lg mb-2 relative z-10">
+                Registration has been closed
               </h3>
-              <p className="text-sm mb-4 leading-relaxed relative z-10">
-                ✨ Integrated Orientation Session : MUN and Research Training ✨
-                <br />
-                Registration is Live! 🚀 Limited Seats Available
-              </p>
-              <button
+              {/* <p className="text-sm mb-4 leading-relaxed relative z-10"> */}
+                {/* ✨ Integrated Orientation Session : MUN and Research Training ✨ */}
+                {/* <br /> */}
+                {/* Registration is Live! 🚀 Limited Seats Available */}
+              {/* </p> */}
+              {/* <button
+
                 onClick={() => handleJoinClick()}
                 className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded-lg font-semibold shadow-lg transition-all relative z-10"
               >
                 Join the Session
-              </button>
+              </button> */}
             </div>
           </div>
         ) : (
@@ -137,20 +138,21 @@ const Session: React.FC = () => {
             >
               ✕
             </button>
-            <h3 className="font-bold text-pink-400 text-lg mb-2 relative z-10">
-              FREE FOR ALL
+            <h3 className="font-bold text-white-400 text-lg mb-2 relative z-10">
+               Registration has been closed
+
             </h3>
-            <p className="text-sm mb-4 leading-relaxed relative z-10">
+            {/* <p className="text-sm mb-4 leading-relaxed relative z-10">
               ✨ Integrated Orientation Session : MUN and Research Training ✨
               <br />
               Registration is Live! 🚀 Limited Seats Available
-            </p>
-            <button
+            </p> */}
+            {/* <button
               onClick={() => handleJoinClick()}
               className="bg-pink-600 hover:bg-pink-700 w-full py-2 rounded-lg font-semibold shadow-lg transition-all relative z-10"
             >
               Join the Session
-            </button>
+            </button> */}
           </div>
         )}
       </div>
