@@ -36,7 +36,6 @@ A modern, responsive, and high-performance web platform built for the IIT (BHU) 
 
 ### Backend / Services
 
-* Firebase
 * Supabase
 
 ### UI & Enhancements
